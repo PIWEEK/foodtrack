@@ -150,37 +150,74 @@ Si consigues ver esta pantalla entonces es que tienes todo correctamente instala
 
 ```
 npm install
+cd cordova
+mkdir www
+cordova prepare
+```
+
+Si recibes un mensaje como el siguiente, normalmente es que te falta la carpeta `www` dentro de la carpeta `cordova`.
+```sh
+Current working directory is not a Cordova-based project
 ```
 
 ## Desarrollo
 
-### Compilar para desarrollo
+### Problemas
+
+Si te da un error al arrancar `npm run cordova-serve-android` parecido a este:
+
 ```
+/home/aitor/Proyectos/kaleidos/foodtrack/cordova/platforms/android/app/src/main/AndroidManifest.xml:17:9-21:25 Error:
+	Missing one of the key attributes 'action#name,category#name' on element intent-filter at AndroidManifest.xml:17:9-21:25
+/home/aitor/Proyectos/kaleidos/foodtrack/cordova/platforms/android/app/src/main/AndroidManifest.xml:18:13-65 Error:
+	Missing 'name' key attribute on element action at AndroidManifest.xml:18:13-65
+/home/aitor/Proyectos/kaleidos/foodtrack/cordova/platforms/android/app/src/main/AndroidManifest.xml:20:13-64 Error:
+	Missing 'name' key attribute on element category at AndroidManifest.xml:20:13-64
+/home/aitor/Proyectos/kaleidos/foodtrack/cordova/platforms/android/app/src/main/AndroidManifest.xml Error:
+	Validation failed, exiting
+```
+
+Es tan sencillo como entrar en `cordova/config.xml` y borrar el siguiente trozo:
+
+```xml
+<config-file parent="/manifest/application" target="AndroidManifest.xml">
+  <intent-filter>
+    <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <data android:mimeType="text/foodtrack" />
+  </intent-filter>
+</config-file>
+```
+
+> Esto es lo que se encarga de llamar a nuestra aplicación cuándo el móvil lea una etiqueta NFC con el MIME type 'text/foodtrack' pero todavía no he encontrado la forma de solucionarlo.
+
+### Compilar para desarrollo
+```sh
 npm run serve
 ```
 
 ### Compilar para desarrollo directamente en el móvil
-```
+```sh
 npm run cordova-serve-android
 ```
 
 ### Compilar y minificar para producción
-```
+```sh
 npm run build
 ```
 
 ### Ejecutar tus tests
-```
+```sh
 npm run test
 ```
 
 ### Ejecutar el linter
-```
+```sh
 npm run lint
 ```
 
 ### Ejecutar tus tests unitarios
-```
+```sh
 npm run test:unit
 ```
 
