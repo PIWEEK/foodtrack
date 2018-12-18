@@ -6,22 +6,35 @@
 
 <style lang="scss">
 #app {
+  color: $dark-shade-100;
   font-family: 'Montserrat', sans-serif;
+  margin-top: 60px;
+  padding: 1rem 1.7rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: $dark-shade-100;
+}
+
+// HEADINGS
+h1 {
+  color: $purple;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: .5rem 0 2rem 0;
 }
 
 // BUTTONS
 .btn-primary {
   background: $purple;
+  border-radius: 8px;
+  border: none;
   box-shadow: 1px 1px 8px rgba(108, 99, 255, 0.5);
   color: white;
   display: flex;
   font-size: 14px;
   font-weight: bold;
-  padding: .7rem 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  padding: .8rem 1rem;
   text-align: center;
   text-transform: uppercase;
   width: 100%;
@@ -44,47 +57,58 @@
     }
   }
 
-  // INPUTS
-  .form-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0 0 20px;
+  &.disabled {
+    cursor: not-allowed;
+    opacity: .5;
+  }
+}
 
-    &:last-child {
-      margin: 0;
+// INPUTS
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 0 1.3rem;
+
+  &:last-child {
+    margin: 0;
+  }
+
+  label {
+    margin: 0 0 10px;
+    color: $dark-shade-100;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  input,
+  textarea,
+  select {
+    background: white;
+    border: 1px solid $dark-shade-25;
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: $dark-shade-100;
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: inherit;
+    outline: none;
+    padding: 12px 20px;
+    line-height: inherit;
+    transition: 0.3s ease;
+    width: 100%;
+
+    &:focus {
+      border-color: $dark-shade-50;
     }
 
-    label {
-      display: block;
-      margin: 0 0 10px;
-      color: $dark-shade-100;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
-      font-weight: bold;
-      line-height: 1;
-      text-transform: uppercase;
-      letter-spacing: .2em;
-    }
-
-    input {
-      outline: none;
-      display: block;
-      background: white;
-      width: 100%;
-      border: 1px solid $dark-shade-25;
-      border-radius: 4px;
-      box-sizing: border-box;
-      padding: 12px 20px;
-      color: $dark-shade-100;
-      font-family: 'Montserrat', sans-serif;
-      font-size: inherit;
-      line-height: inherit;
-      transition: 0.3s ease;
-
-      &:focus {
-        border-color: $dark-shade-50;
-      }
+    &::placeholder {
+      color: $dark-shade-50;
     }
   }
 }
