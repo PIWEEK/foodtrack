@@ -61,7 +61,7 @@
       color: $dark-shade-100;
       font-family: 'Montserrat', sans-serif;
       font-size: 12px;
-      font-weight: $bold;
+      font-weight: bold;
       line-height: 1;
       text-transform: uppercase;
       letter-spacing: .2em;
@@ -79,7 +79,6 @@
       color: $dark-shade-100;
       font-family: 'Montserrat', sans-serif;
       font-size: inherit;
-      font-weight: $semibold;
       line-height: inherit;
       transition: 0.3s ease;
 
