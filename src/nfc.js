@@ -1,3 +1,21 @@
+if (!window.nfc) {
+  console.warn('NFC is not defined')
+  window.nfc = {
+    addNdefListener: () => console.log('nfc.addNdefListener'),
+    addNdefFormatableListener: () => console.log('nfc.addNdefFormatableListener'),
+    addTagDiscoveredListener: () => console.log('nfc.addTagDiscoveredListener'),
+    addMimeTypeListener: () => console.log('nfc.addMimeTypeListener'),
+    removeNdefListener: () => console.log('nfc.removeNdefListener'),
+    removeNdefFormatableListener: () => console.log('nfc.removeNdefFormatableListener'),
+    removeTagDiscoveredListener: () => console.log('nfc.removeTagDiscoveredListener')
+  }
+}
+if (!window.ndef) {
+  window.ndef = {
+    mimeMediaRecord: () => console.log('ndef.mimeMediaRecord')
+  }
+}
+
 const MIME_TYPE = 'text/foodtrack'
 
 const callbacks = new Map()
