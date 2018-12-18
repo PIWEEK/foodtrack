@@ -14,8 +14,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.row-flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin: .5rem 0 0;
+}
+
 // HEADINGS
-h1 {
+h1.purple {
   color: $purple;
   font-size: 1.3rem;
   font-weight: bold;
@@ -98,7 +104,7 @@ h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: inherit;
     outline: none;
-    padding: 12px 20px;
+    padding: .8rem 1rem;
     line-height: inherit;
     transition: 0.3s ease;
     width: 100%;
@@ -109,6 +115,64 @@ h1 {
 
     &::placeholder {
       color: $dark-shade-50;
+    }
+  }
+}
+
+// RADIO
+.radio{
+  display: block;
+  cursor: pointer;
+  user-select:none;
+  text-align: left;
+
+  &+.radio{
+    margin-left: 2rem;
+  }
+
+  input{
+    display: none;
+
+    &+span{
+      display: inline-block;
+      font-weight: 400;
+      line-height: 1.1;
+      position: relative;
+      padding-left: 24px;
+
+      &:before{
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        border-radius: 50%;
+        margin-right: 5px;
+        width: 16px;
+        height: 16px;
+        border: 1px solid $purple;
+        background: #fff;
+      }
+
+      &:after{
+        content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        background: $purple;
+        position: absolute;
+        border-radius: 50%;
+        top: 4px;
+        left: 4px;
+        opacity: 0;
+        transform: scale(0,0);
+        transition: all .2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+      }
+    }
+
+    &:checked+span:after{
+      opacity: 1;
+      transform: scale(1,1);
     }
   }
 }

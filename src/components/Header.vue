@@ -35,7 +35,7 @@ export default {
   display: flex;
   left: 0;
   justify-content: center;
-  padding: .5rem .8rem;
+  padding: 1rem;
   position: fixed;
   top: 0;
   width: 100%;

@@ -1,7 +1,7 @@
 <template>
   <div class="add-tupper-view">
     <Header></Header>
-    <h1>Añadir tupper</h1>
+    <h1 class="purple">Añadir tupper</h1>
     <form id="addTupper" @submit="addTupper">
       <div class="form-group">
         <label for="name">NOMBRE</label>
@@ -19,11 +19,19 @@
         <label for="cooked-at">COCINADO EL</label>
         <input id="cooked-at" type="date" @input="cookedAt = $event.target.valueAsDate">
       </div>
-      <select v-model="location">
-        <option disabled value="">Please select one</option>
-        <option>Fridge</option>
-        <option>Freezer</option>
-      </select>
+      <div class="form-group">
+        <label>LO VOY A GUARDAR EN</label>
+        <div class="row-flex">
+          <label class="radio">
+            <input name="radio" type="radio" checked v-model="location">
+            <span>Congelador</span>
+          </label>
+          <label class="radio">
+            <input name="radio" type="radio" v-model="location">
+            <span>Nevera</span>
+          </label>
+        </div>
+      </div>
       <div class="form-group">
         <label for="cooked-at">AVÍSAME EN</label>
         <select v-model="notifyMe">
@@ -84,3 +92,12 @@ export default {
   }
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss">
+.add-tupper-view {
+  form {
+    animation: fadeInUp .6s ease;
+  }
+}
+</style>
