@@ -9,6 +9,7 @@ import TupperDetail from './views/TupperDetail.vue'
 
 import Register from './views/Register.vue'
 import Login from './views/Login.vue'
+import Created from './views/Created.vue'
 
 Vue.use(Router)
 
@@ -51,6 +52,12 @@ export default new Router({
       path: '/register',
       name: 'Register',
       component: Register
+    },
+    {
+      path: '/created',
+      name: 'Created',
+      component: Created
     }
+
   ]
 })
