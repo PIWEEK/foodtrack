@@ -20,7 +20,7 @@ export default {
   mounted() {
     document.body.classList.add('home')
     setTimeout(() => {
-      this.$router.push('/home')
+      this.$router.replace('/home')
     }, 2000)
   }
 }

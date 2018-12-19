@@ -5,15 +5,19 @@
     <div :class="scanningClass">
       <IconTupperNFC className="icon-tupper-nfc"></IconTupperNFC>
     </div>
-    <button v-if="isAvailable && !isEnabled" class="btn-primary btn-line-transparent" type="submit">
-      Volver a escanear
-    </button>
+    <div class="btn-icon">
+      <IconNfc className="icon-nfc"></IconNfc>
+      <button v-if="isAvailable && !isEnabled" class="btn-primary btn-line-transparent" type="submit">
+        Volver a escanear
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
 import nfc from '@/nfc'
-import IconTupperNFC from '@/icons/tupper-nfc.vue'
+import IconTupperNFC from '@/icons/tupper-nfc'
+import IconNfc from '@/icons/icon-nfc'
 
 export default {
   name: 'Scanning',
@@ -21,9 +25,11 @@ export default {
     IconTupperNFC
   },
   created() {
-    document.body.classList.add('home')
     nfc.start()
     nfc.on('read', this.handleNFCRead)
+  },
+  mounted() {
+    document.body.classList.add('home')
   },
   destroyed() {
     document.body.classList.remove('home')

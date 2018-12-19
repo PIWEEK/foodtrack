@@ -21,11 +21,13 @@
     </div>
     <div class="btn-icon">
       <IconNfc className="icon-nfc"></IconNfc>
-      <button class="btn-primary">ESCANEAR NFC</button>
+      <router-link tag="button" class="btn-primary" to="/scanning">
+        Escanear NFC
+      </router-link>
     </div>
     <button class="btn-primary btn-line">
       <IconFridge className="icon-fridge"></IconFridge>
-      <span>COMPARTIR FRIGORIFICO</span>
+      <span>Compartir frigorífico</span>
     </button>
     </div>
   </div>

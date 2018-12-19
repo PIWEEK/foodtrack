@@ -20,19 +20,24 @@
     <div class="free-slots">
       Me quedan <strong>{{slots}} huecos</strong> en el congelador
     </div>
-    <router-link tag="button" class="btn-primary" to="/scanning">
-      Escanear NFC
-    </router-link>
+    <div class="btn-icon">
+      <IconNfc className="icon-nfc"></IconNfc>
+      <router-link tag="button" class="btn-primary" to="/scanning">
+        Escanear NFC
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header'
+import IconNfc from '@/icons/icon-nfc'
 
 export default {
   name: 'TupperList',
   components: {
-    Header
+    Header,
+    IconNfc
   },
   created() {
     this.$store.dispatch('tupperList')
