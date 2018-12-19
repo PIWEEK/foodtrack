@@ -5,6 +5,12 @@
 </template>
 
 <style lang="scss">
+body {
+  &.home {
+    background: linear-gradient(270deg, #F8A4D8 0%, #6C63FF 100%);
+  }
+}
+
 #app {
   color: $dark-shade-100;
   font-family: 'Montserrat', sans-serif;
@@ -70,6 +76,13 @@ hr {
     }
   }
 
+  &.btn-white {
+    border-radius: 8px;
+    box-shadow: 1px 1px 8px rgba(108, 99, 255, 0.5);
+    background: white;
+    color: $purple;
+  }
+
   &.disabled {
     cursor: not-allowed;
     opacity: .5;
@@ -94,6 +107,13 @@ hr {
       fill: $purple;
       width: 15px;
     }
+  }
+
+  &.btn-line-transparent {
+    border: 2px solid white;
+    border-radius: 8px;
+    background: transparent;
+    color: white;
   }
 }
 

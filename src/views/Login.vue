@@ -1,5 +1,5 @@
 <template>
-  <div class="register">
+  <div class="login">
     <Header></Header>
     <h1 class="purple">Inicio de sesión</h1>
     <form @submit.prevent="submit">
