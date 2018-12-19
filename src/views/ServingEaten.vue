@@ -13,9 +13,14 @@
 
 <script>
 import Header from '@/components/Header.vue'
+import IconTupperOk from '@/icons/tupper-ok.vue'
 
 export default {
   name: 'ServingEaten',
+  components: {
+    Header,
+    IconTupperOk
+  },
   created() {
     document.body.classList.add('done')
   },

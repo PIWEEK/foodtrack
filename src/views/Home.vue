@@ -3,8 +3,8 @@
     <div class="login-logo">
       <MainLogoWhite className="main-logo"></MainLogoWhite>
     </div>
-    <router-link to="Login" class="btn-primary btn-white" tag="button">Iniciar sesión</router-link>
-    <router-link to="Register" class="btn-primary btn-line-transparent" tag="button">Registrarme</router-link>
+    <router-link to="login" class="btn-primary btn-white" tag="button">Iniciar sesión</router-link>
+    <router-link to="register" class="btn-primary btn-line-transparent" tag="button">Registrarme</router-link>
   </div>
 </template>
 

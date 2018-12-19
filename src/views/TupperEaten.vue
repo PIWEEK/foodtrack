@@ -8,17 +8,19 @@
 
 <script>
 import Header from '@/components/Header.vue'
+import IconTupperOk from '@/icons/tupper-ok.vue'
 
 export default {
   name: 'TupperEaten',
-  data: {
-    name: null,
-  },
-  created: {
-    this.name = this.$store.state.tupperEaten
-  },
   components: {
-      Header
+    Header,
+    IconTupperOk
+  },
+  created() {
+    document.body.classList.add('done')
+  },
+  destroyed() {
+    document.body.classList.remove('done')
   },
   methods: {
     toHome() {

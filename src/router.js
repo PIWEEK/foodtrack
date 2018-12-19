@@ -12,6 +12,8 @@ import Profile from './views/Profile.vue'
 import AddTupper from './views/AddTupper.vue'
 import TupperDetail from './views/TupperDetail.vue'
 import TupperCreated from './views/TupperCreated.vue'
+import TupperEaten from './views/TupperEaten.vue'
+import ServingEaten from './views/ServingEaten.vue'
 import TupperList from './views/TupperList.vue'
 import Scanning from './views/Scanning.vue'
 
@@ -76,6 +78,16 @@ export default new Router({
       path: '/tupper-created',
       name: 'TupperCreated',
       component: TupperCreated
+    },
+    {
+      path: '/tupper-eaten',
+      name: 'TupperEaten',
+      component: TupperEaten
+    },
+    {
+      path: '/serving-eaten',
+      name: 'ServingEaten',
+      component: ServingEaten
     },
     {
       path: '/scanning',
