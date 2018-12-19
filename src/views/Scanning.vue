@@ -39,7 +39,9 @@ export default {
   },
   methods: {
     handleNFCRead(tagId) {
-      const isNew = !!this.$store.state.tuppers.find(tupper => tupper.tagId === tagId)
+      const tupper = this.$store.state.tuppers.find(tupper => tupper.tagId === tagId)
+      console.log(tupper)
+      const isNew = tupper !== null
       this.$store.dispatch('tupperRead', { tagId })
       if (isNew) {
         this.$router.replace('/add-tupper')
