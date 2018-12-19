@@ -6,6 +6,8 @@
 
 <style lang="scss">
 body {
+  position: relative;
+
   &.home {
     background: linear-gradient(270deg, #F8A4D8 0%, #6C63FF 100%);
   }

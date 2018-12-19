@@ -3,7 +3,7 @@
     <a class="trigger-menu" href="#">
       <IconHome className="icon-home"></IconHome>
     </a>
-    <MainLogo className="main-logo"></MainLogo>
+    <MainLogo className="foodtrack-logo"></MainLogo>
     <div class="user-zone">
       <a href="#">
         <IconBell className="icon-bell"></IconBell>
@@ -41,7 +41,7 @@ export default {
   width: 100%;
   z-index: 10;
 }
-.main-logo {
+.foodtrack-logo {
   margin: auto;
 }
 .trigger-menu {

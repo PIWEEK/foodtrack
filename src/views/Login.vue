@@ -3,7 +3,7 @@
     <div class="login-logo">
       <MainLogoColor className="main-logo"></MainLogoColor>
     </div>
-    <h1>Inicio de sesión</h1>
+    <h1 class="light">Inicio de sesión</h1>
     <form @submit.prevent="submit">
       <div class="form-group">
         <label for="email">E-mail</label>
@@ -67,11 +67,12 @@ export default {
   }
 }
 
-h1 {
+h1.light {
   color: $dark-shade-50;
   font-size: 1.5rem;
   margin: 2rem 0 4rem 0;
   text-align: center;
   width: 100%;
 }
+
 </style>
