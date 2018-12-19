@@ -1,8 +1,13 @@
 <template>
   <div class="serving-eaten">
     <Header></Header>
-    <p>te has comido una ración de  {{ name }} estupendérrimamente</p>
-    <button type="button" v-on:click="toHome">OK - vamos a  Home</button>
+    <p>Te has comido <span>{{ servings }} ración</span> de</p>
+    <IconTupperOk className="white"></IconTupperOk>
+    <h1>{{ name }}</h1>
+    <p>Me {{ verb }} {{ availableServings }}</p>
+    <router-link tag="button" to="/dashboard">
+      ¡OK!
+    </router-link>
   </div>
 </template>
 
@@ -11,16 +16,50 @@ import Header from '@/components/Header.vue'
 
 export default {
   name: 'ServingEaten',
-  data: {
-    name: null,
+  created() {
+    document.body.classList.add('done')
   },
-  created: {
-    this.name = this.$store.state.servingEaten
+  destroyed() {
+    document.body.classList.remove('done')
   },
-  methods: {
-    toHome() {
-      this.$router.push('/')
+  computed: {
+    verb() {
+      return this.$store.state.servingEaten.availableServings > 1 ? 'quedan' : 'queda'
+    },
+    availableServings() {
+      return this.$store.state.servingEaten.availableServings
+    },
+    servings() {
+      return this.$store.state.servingEaten.servings
+    },
+    name() {
+      return this.$store.state.servingEaten.name
     }
   }
 }
 </script>
+
+<style lang="scss">
+.serving-eaten {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  h1 {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    font-size: 3rem;
+  }
+}
+
+.white {
+  fill: white;
+}
+</style>

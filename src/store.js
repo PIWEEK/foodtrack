@@ -14,7 +14,9 @@ export default new Vuex.Store({
       name: ''
     },
     servingEaten: {
-      name: ''
+      name: '',
+      servings: 1,
+      availableServings: 0
     },
     tuppers: [],
     nfc: {
