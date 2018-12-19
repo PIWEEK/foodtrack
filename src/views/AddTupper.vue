@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import storage from '../storage'
 import Header from '@/components/Header.vue'
+import apistorage from '../apistorage'
 
 export default {
   name: 'AddTupper',
@@ -67,19 +67,7 @@ export default {
 
   methods: {
     addTupper() {
-      const maxId = localStorage.getItem('maxId')
-        ? parseInt(localStorage.getItem('maxId'))
-        : 0
-      console.log('maxId: ')
-      console.log(maxId)
-
-      const tupperId = maxId + 1
-      console.log('tupperId: ')
-      console.log(tupperId)
-
-      localStorage.setItem('maxId', tupperId)
       const tupper = {
-        id: tupperId,
         name: this.name,
         description: this.description,
         servings: this.servings,
@@ -87,7 +75,7 @@ export default {
         location: this.location,
         notifyMe: this.notifyMe
       }
-      storage.addTupper(tupper)
+      apistorage.addTupper(tupper)
     }
   }
 }
