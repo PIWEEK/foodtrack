@@ -14,13 +14,11 @@ import MainLogoWhite from '@/icons/foodtrack-logo-white.vue'
 export default {
   name: 'Splash',
   components: { MainLogoWhite },
-  created() {
-    document.body.classList.add('home')
-  },
   destroyed() {
     document.body.classList.remove('home')
   },
   mounted() {
+    document.body.classList.add('home')
     setTimeout(() => {
       this.$router.push('/home')
     }, 2000)

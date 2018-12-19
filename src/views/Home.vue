@@ -14,7 +14,7 @@ import MainLogoWhite from '@/icons/foodtrack-logo-white.vue'
 export default {
   name: 'Home',
   components: { MainLogoWhite },
-  created() {
+  mounted() {
     document.body.classList.add('home')
   },
   destroyed() {
