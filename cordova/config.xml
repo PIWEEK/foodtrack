@@ -3,8 +3,7 @@
     <name>FoodTrack</name>
     <description />
     <author email="dev@cordova.apache.org" href="http://cordova.io">FoodTrack Team</author>
-    <content src="http://10.8.1.160:8081" />
-    <allow-navigation href="http://10.8.1.160:8081" />
+    <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
