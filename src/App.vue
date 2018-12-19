@@ -25,7 +25,7 @@ h1.purple {
   color: $purple;
   font-size: 1.3rem;
   font-weight: bold;
-  margin: .5rem 0 2rem 0;
+  margin: 1rem 0 2rem 0;
 }
 
 // BUTTONS
@@ -40,14 +40,14 @@ h1.purple {
   font-weight: bold;
   justify-content: center;
   margin-top: 2rem;
-  padding: .8rem 1rem;
+  padding: 1rem;
   text-align: center;
   text-transform: uppercase;
   width: 100%;
 
   &:hover {
     background: darken($purple, 15);
-    margin-top: 4px;
+    transform: translateY(4px);
   }
 
   svg {
@@ -69,12 +69,25 @@ h1.purple {
   }
 }
 
+.btn-icon {
+  position: relative;
+
+  svg {
+    fill: white;
+    left: 15%;
+    position: absolute;
+    top: 4px;
+    width: 25px;
+  }
+}
+
 // INPUTS
 .form-group {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
+  position: relative;
   margin: 0 0 1.3rem;
 
   &:last-child {
@@ -116,6 +129,14 @@ h1.purple {
     &::placeholder {
       color: $dark-shade-50;
     }
+  }
+
+  svg {
+    bottom: 5px;
+    fill: $purple;
+    position: absolute;
+    right: 1.5rem;
+    width: 20px;
   }
 }
 

@@ -12,10 +12,12 @@
         <textarea id="description" v-model="description" rows="3" placeholder="Qué exquisitez as cocinado?" />
       </div>
       <div class="form-group">
+        <IconUser className="icon-user"></IconUser>
         <label for="servings">RACIONES</label>
         <input id="servings" v-model="servings" placeholder="(pax.)">
       </div>
       <div class="form-group">
+        <IconDate className="icon-date"></IconDate>
         <label for="cooked-at">COCINADO EL</label>
         <input id="cooked-at" type="date" @input="cookedAt = $event.target.valueAsDate">
       </div>
@@ -40,7 +42,10 @@
           <option value="one-month">1 month</option>
         </select>
       </div>
-      <input class="btn-primary btn-green" type="submit" value="Guardar">
+      <div class="btn-icon">
+        <IconCheck className="icon-check"></IconCheck>
+        <input class="btn-primary btn-green" type="submit" value="Guardar">
+      </div>
     </form>
   </div>
 </template>
@@ -48,11 +53,14 @@
 <script>
 import Header from '@/components/Header.vue'
 import apistorage from '../apistorage'
+import IconDate from '@/icons/icon-date.vue'
+import IconCheck from '@/icons/icon-check.vue'
+import IconUser from '@/icons/icon-user.vue'
 
 export default {
   name: 'AddTupper',
   components: {
-    Header
+    Header, IconDate, IconCheck, IconUser
   },
   data: function () {
     return {

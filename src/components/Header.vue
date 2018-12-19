@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <a class="trigger-menu" href="#">
-      <IconMenu className="icon-menu"></IconMenu>
+      <IconHome className="icon-home"></IconHome>
     </a>
     <MainLogo className="main-logo"></MainLogo>
     <div class="user-zone">
@@ -17,12 +17,12 @@
 
 <script>
 import MainLogo from '@/icons/foodtrack-logo.vue'
-import IconMenu from '@/icons/icon-menu.vue'
+import IconHome from '@/icons/icon-home.vue'
 import IconBell from '@/icons/icon-bell.vue'
 import IconFace from '@/icons/icon-face.vue'
 export default {
   name: 'Header',
-  components: { MainLogo, IconMenu, IconBell, IconFace }
+  components: { MainLogo, IconHome, IconBell, IconFace }
 }
 </script>
 
@@ -46,13 +46,13 @@ export default {
 }
 .trigger-menu {
 }
-.icon-menu {
-  fill: $purple;
-}
 .icon-bell {
   fill: $purple;
 }
 .icon-face {
+  fill: $purple;
+}
+.icon-home {
   fill: $purple;
 }
 .user-zone {
