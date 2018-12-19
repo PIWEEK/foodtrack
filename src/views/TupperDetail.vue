@@ -23,7 +23,7 @@
       <IconTrash className="icon-trash"></IconTrash>
       <span>ELIMINAR</span>
     </a>
-    <hr></hr>
+    <hr/>
     <h5 class="small">COMER POR RACIONES</h5>
     <div class="row-flex">
       <button class="btn-primary btn-line">
@@ -148,6 +148,5 @@ h5.small {
   text-align: left;
   text-transform: uppercase;
 }
-
 
 </style>
