@@ -40,7 +40,9 @@
           <option value="one-month">1 month</option>
         </select>
       </div>
-      <input class="btn-primary btn-green" type="submit" value="Guardar">
+      <button class="btn-primary btn-green" type="submit">
+        Guardar
+      </button>
     </form>
   </div>
 </template>
@@ -54,7 +56,7 @@ export default {
   components: {
     Header
   },
-  data: function () {
+  data() {
     return {
       name: null,
       description: null,
