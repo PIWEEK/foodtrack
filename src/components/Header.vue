@@ -1,16 +1,16 @@
 <template>
   <div class="header">
-    <a class="trigger-menu" href="#">
+    <router-link class="trigger-menu" to="/dashboard">
       <IconHome className="icon-home"></IconHome>
-    </a>
+    </router-link>
     <MainLogo className="foodtrack-logo"></MainLogo>
     <div class="user-zone">
-      <a href="#">
+      <router-link to="/notifications">
         <IconBell className="icon-bell"></IconBell>
-      </a>
-      <a href="#">
+      </router-link>
+      <router-link to="/profile">
         <IconFace className="icon-face"></IconFace>
-      </a>
+      </router-link>
     </div>
   </div>
 </template>
@@ -41,11 +41,15 @@ export default {
   width: 100%;
   z-index: 10;
 }
+
 .foodtrack-logo {
   margin: auto;
 }
+
 .trigger-menu {
+
 }
+
 .icon-bell {
   fill: $purple;
 }
@@ -55,6 +59,7 @@ export default {
 .icon-home {
   fill: $purple;
 }
+
 .user-zone {
   display: flex;
   :last-child {

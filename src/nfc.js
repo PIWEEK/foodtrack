@@ -2,12 +2,8 @@ if (!window.nfc) {
   console.warn('NFC is not defined')
   window.nfc = {
     addNdefListener: () => console.log('nfc.addNdefListener'),
-    addNdefFormatableListener: () => console.log('nfc.addNdefFormatableListener'),
-    addTagDiscoveredListener: () => console.log('nfc.addTagDiscoveredListener'),
     addMimeTypeListener: () => console.log('nfc.addMimeTypeListener'),
-    removeNdefListener: () => console.log('nfc.removeNdefListener'),
-    removeNdefFormatableListener: () => console.log('nfc.removeNdefFormatableListener'),
-    removeTagDiscoveredListener: () => console.log('nfc.removeTagDiscoveredListener')
+    removeNdefListener: () => console.log('nfc.removeNdefListener')
   }
 }
 if (!window.ndef) {
@@ -24,22 +20,20 @@ function handleMimeType(e) {
   console.log('mimetype', e)
 }
 
-function handleTagDiscovered(e) {
-  console.log('tagDiscovered', e)
-}
-
 function handleNdef(e) {
   console.log('ndef', e)
   // nfc.connect('android.nfc.tech.Ndef')
+  /*
   write([
     ndef.mimeMediaRecord(MIME_TYPE, nfc.stringToBytes('Hello, World!'))
   ])
     .then(() => console.log('Written'))
     .catch(() => console.log('Not written'))
-}
-
-function handleNdefFormatable(e) {
-  console.log('ndef formatable', e)
+  */
+  if (callbacks.has('read')) {
+    const callback = callbacks.get('read')
+    callback(e)
+  }
 }
 
 /**
@@ -66,15 +60,11 @@ export function off(type) {
 
 export function start() {
   nfc.addNdefListener(handleNdef)
-  nfc.addNdefFormatableListener(handleNdefFormatable)
-  nfc.addTagDiscoveredListener(handleTagDiscovered)
   nfc.addMimeTypeListener(MIME_TYPE, handleMimeType)
 }
 
 export function stop() {
   nfc.removeNdefListener(handleNdef)
-  nfc.removeNdefFormatableListener(handleNdefFormatable)
-  nfc.removeTagDiscoveredListener(handleTagDiscovered)
 }
 
 export function write(message) {

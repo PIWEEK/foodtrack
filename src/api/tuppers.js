@@ -1,12 +1,8 @@
-import axios from 'axios'
 import Status from 'http-status-codes'
+import axios from './axios'
 
 export async function addTupper(tupper) {
-  const instance = axios.create({
-    withCredentials: true,
-    baseURL: 'http://localhost:3000'
-  })
-  const response = await instance.post('/tuppers/', {
+  const response = await axios.post('/tuppers/', {
     tagId: tupper.tagId,
     tupperId: tupper.tupperId,
     name: tupper.name,
@@ -22,8 +18,14 @@ export async function addTupper(tupper) {
   console.log(response)
 }
 
+export async function list() {
+  const response = await axios.get('/tuppers')
+  return response.data
+}
+
 export default {
-  addTupper
+  addTupper,
+  list
 }
 
 // console.log(response.data);

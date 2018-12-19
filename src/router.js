@@ -5,13 +5,15 @@ import Home from './views/Home.vue'
 import Dashboard from './views/Dashboard.vue'
 import Splash from './views/Splash.vue'
 
-import AddTupper from './views/AddTupper.vue'
-import TupperDetail from './views/TupperDetail.vue'
-
 import Register from './views/Register.vue'
 import Login from './views/Login.vue'
-import TupperCreated from './views/TupperCreated.vue'
 import Profile from './views/Profile.vue'
+
+import AddTupper from './views/AddTupper.vue'
+import TupperDetail from './views/TupperDetail.vue'
+import TupperCreated from './views/TupperCreated.vue'
+import TupperList from './views/TupperList.vue'
+import Scanning from './views/Scanning.vue'
 
 Vue.use(Router)
 
@@ -56,6 +58,11 @@ export default new Router({
       component: TupperDetail
     },
     {
+      path: '/tupper-list',
+      name: 'TupperList',
+      component: TupperList
+    },
+    {
       path: '/login',
       name: 'Login',
       component: Login
@@ -69,7 +76,11 @@ export default new Router({
       path: '/tupper-created',
       name: 'TupperCreated',
       component: TupperCreated
+    },
+    {
+      path: '/scanning',
+      name: 'Scanning',
+      component: Scanning
     }
-
   ]
 })
