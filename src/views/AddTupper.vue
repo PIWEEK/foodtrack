@@ -2,27 +2,27 @@
   <div class="add-tupper-view">
     <Header></Header>
     <h1 class="purple">Añadir tupper</h1>
-    <form id="addTupper" @submit="addTupper">
+    <form @submit.prevent="submit">
       <div class="form-group">
-        <label for="name">NOMBRE</label>
+        <label for="name">Nombre</label>
         <input id="name" v-model="name" placeholder="Mi tupper">
       </div>
       <div class="form-group">
-        <label for="content">CONTENIDO</label>
+        <label for="content">Contenido</label>
         <textarea id="content" v-model="content" rows="3" placeholder="Qué exquisitez as cocinado?" />
       </div>
       <div class="form-group">
         <IconUser className="icon-user"></IconUser>
-        <label for="servings">RACIONES</label>
+        <label for="servings">Raciones</label>
         <input id="servings" v-model="servings" placeholder="(pax.)">
       </div>
       <div class="form-group">
         <IconDate className="icon-date"></IconDate>
-        <label for="cooked-at">COCINADO EL</label>
-        <input id="cooked-at" type="date" @input="cookedAt = $event.target.valueAsDate">
+        <label for="cooked-at">Cocinado el</label>
+        <input id="cooked-at" type="date" v-model="cooked">
       </div>
       <div class="form-group">
-        <label>LO VOY A GUARDAR EN</label>
+        <label>Lo voy a guardar en</label>
         <div class="row-flex">
           <label class="radio">
             <input name="radio" type="radio" checked v-model="storedAt" value="freezer">
@@ -35,9 +35,9 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="cooked-at">AVÍSAME EN</label>
-        <select v-model="notifyMeAt">
-          <option selected disabled value="">Selecciona una opción</option>
+        <label for="notify-me-at">Avísame en</label>
+        <select id="notify-me-at" v-model="notifyMeAt">
+          <option selected disabled value="none">Selecciona una opción</option>
           <option value="one-week">1 week</option>
           <option value="one-month">1 month</option>
         </select>
@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 import api from '@/api'
 import Header from '@/components/Header.vue'
 import IconDate from '@/icons/icon-date.vue'
@@ -66,17 +67,26 @@ export default {
     return {
       tagId: null,
       tupperId: null,
-      name: null,
-      content: null,
-      servings: null,
-      cookedAt: null,
-      storedAt: null,
-      notifyMeAt: null
+      name: '',
+      content: '',
+      servings: 1,
+      cookedAt: new Date(),
+      storedAt: 'fridge',
+      notifyMeAt: ''
     }
   },
-
+  computed: {
+    cooked: {
+      get() {
+        return moment(this.cookedAt).format('YYYY-MM-DD')
+      },
+      set(newValue) {
+        this.cookedAt = new Date(newValue)
+      }
+    }
+  },
   methods: {
-    async addTupper(e) {
+    async submit(e) {
       try {
         const tupper = {
           tagId: '11111111',
