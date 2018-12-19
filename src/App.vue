@@ -28,6 +28,11 @@ h1.purple {
   margin: 1rem 0 2rem 0;
 }
 
+hr {
+  border: 1px solid $dark-shade-25;
+  margin: 1.5rem 0;
+}
+
 // BUTTONS
 .btn-primary {
   background: $purple;
@@ -36,10 +41,12 @@ h1.purple {
   box-shadow: 1px 1px 8px rgba(108, 99, 255, 0.5);
   color: white;
   display: flex;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: bold;
   justify-content: center;
   margin-top: 2rem;
+  min-height: 50px;
   padding: 1rem;
   text-align: center;
   text-transform: uppercase;
@@ -66,6 +73,27 @@ h1.purple {
   &.disabled {
     cursor: not-allowed;
     opacity: .5;
+  }
+
+  &.btn-line {
+    align-items: center;
+    background: white;
+    border: 2px solid $purple;
+    box-shadow: none;
+    color: $purple;
+    flex: 1;
+    margin-top: 0;
+    padding: .3rem 1rem;
+
+    &:hover {
+      background: $purple;
+      color: white;
+    }
+
+    svg {
+      fill: $purple;
+      width: 15px;
+    }
   }
 }
 
@@ -128,6 +156,14 @@ h1.purple {
 
     &::placeholder {
       color: $dark-shade-50;
+    }
+
+    &:valid {
+      border-color: $green;
+    }
+
+    &:invalid {
+      border-color: $red;
     }
   }
 
