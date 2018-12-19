@@ -23,13 +23,16 @@ export default {
   created() {
     document.body.classList.add('home')
     nfc.start()
-    nfc.on('read', (e) => {
-      console.log(e)
-    })
+    nfc.on('read', this.handleNFCRead)
   },
   destroyed() {
     document.body.classList.remove('home')
     nfc.stop()
+  },
+  methods: {
+    handleNFCRead(e) {
+      console.log(e)
+    }
   },
   computed: {
     scanningClass() {

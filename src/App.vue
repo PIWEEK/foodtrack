@@ -11,6 +11,15 @@ body {
   &.home {
     background: linear-gradient(270deg, #F8A4D8 0%, #6C63FF 100%);
   }
+
+  &.done {
+    background: linear-gradient(270deg, #66D2EA 0%, #6FCF97 100%);
+    color: white;
+
+    p, h1 {
+      color: white;
+    }
+  }
 }
 
 #app {

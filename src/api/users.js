@@ -1,8 +1,8 @@
-import axios from 'axios'
+import axios from './axios'
 import Status from 'http-status-codes'
 
 export async function register(name, email, password) {
-  const response = await axios.post('http://localhost:3000/auth', {
+  const response = await axios.post('/users', {
     name,
     email,
     password
