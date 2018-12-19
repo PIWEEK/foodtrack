@@ -1,7 +1,7 @@
 <template>
-  <div class="tupper-created">
+  <div class="serving-eaten">
     <Header></Header>
-    <p>has creado tu tupper de {{ name }} de puturrú de foie</p>
+    <p>te has comido una ración de  {{ name }} estupendérrimamente</p>
     <button type="button" v-on:click="toHome">OK - vamos a  Home</button>
   </div>
 </template>
@@ -10,15 +10,12 @@
 import Header from '@/components/Header.vue'
 
 export default {
-  name: 'TupperCreated',
+  name: 'ServingEaten',
   data: {
     name: null,
   },
   created: {
-    this.name = this.$store.state.tupperCreated
-  },
-  components: {
-      Header
+    this.name = this.$store.state.servingEaten
   },
   methods: {
     toHome() {
