@@ -44,7 +44,9 @@
       </div>
       <div class="btn-icon">
         <IconCheck className="icon-check"></IconCheck>
-        <input class="btn-primary btn-green" type="submit" value="Guardar">
+      	<button class="btn-primary btn-green" type="submit">
+          Guardar
+      	</button>
       </div>
     </form>
   </div>
@@ -62,7 +64,7 @@ export default {
   components: {
     Header, IconDate, IconCheck, IconUser
   },
-  data: function () {
+  data() {
     return {
       name: null,
       description: null,
