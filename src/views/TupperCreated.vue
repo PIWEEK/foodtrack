@@ -1,8 +1,10 @@
 <template>
-  <div class="created">
+  <div class="tupper-created">
     <Header></Header>
-    <p>has creado tu tupper de puturrú de foie</p>
-    <button type="button" v-on:click="toHome">OK - vamos a  Home</button>
+    <p>has creado tu tupper de {{ name }} de puturrú de foie</p>
+    <router-link type="button" to="/dashboard">
+      OK - vamos a  Home
+    </router-link>
   </div>
 </template>
 
@@ -10,10 +12,13 @@
 import Header from '@/components/Header.vue'
 
 export default {
-  name: 'Home',
-  methods: {
-    toHome() {
-      this.$router.push('/')
+  name: 'TupperCreated',
+  components: {
+    Header
+  },
+  computed: {
+    name() {
+      return this.$store.state.tupperCreated
     }
   }
 }

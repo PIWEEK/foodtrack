@@ -8,7 +8,12 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     tupperCreated: {
-      _id: '',
+      name: ''
+    },
+    tupperEaten: {
+      name: ''
+    },
+    servingEaten: {
       name: ''
     },
     tuppers: [],
@@ -23,6 +28,12 @@ export default new Vuex.Store({
     },
     tupperCreated(state, payload) {
       state.tupperCreated.name = payload.name
+    },
+    tupperEaten(state, payload) {
+      state.tupperEaten.name = payload.name
+    },
+    servingEaten(state, payload) {
+      state.servingEaten.name = payload.name
     },
     nfcCheck(state, payload) {
       if (payload === true) {
@@ -52,6 +63,12 @@ export default new Vuex.Store({
       }).catch((reason) => {
         commit('nfcCheck', reason)
       })
+    },
+    tupperEaten({ commit }, payload) {
+      commit('tupperEaten', payload)
+    },
+    servingEaten({ commit }, payload) {
+      commit('servingEaten', payload)
     }
   }
 })
