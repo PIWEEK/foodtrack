@@ -5,9 +5,9 @@
     <div :class="scanningClass">
       <IconTupperNFC className="icon-tupper-nfc"></IconTupperNFC>
     </div>
-    <div class="btn-icon">
-      <IconNfc className="icon-nfc"></IconNfc>
-      <button v-if="isAvailable && !isEnabled" class="btn-primary btn-line-transparent" type="submit">
+    <div v-if="isAvailable && !isEnabled" class="btn-icon">
+      <IconNFC className="icon-nfc"></IconNFC>
+      <button class="btn-primary btn-line-transparent" type="submit">
         Volver a escanear
       </button>
     </div>
@@ -17,11 +17,12 @@
 <script>
 import nfc from '@/nfc'
 import IconTupperNFC from '@/icons/tupper-nfc'
-import IconNfc from '@/icons/icon-nfc'
+import IconNFC from '@/icons/icon-nfc'
 
 export default {
   name: 'Scanning',
   components: {
+    IconNFC,
     IconTupperNFC
   },
   created() {
