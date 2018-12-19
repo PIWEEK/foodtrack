@@ -19,6 +19,11 @@ export default {
   },
   destroyed() {
     document.body.classList.remove('home')
+  },
+  mounted() {
+    setTimeout(() => {
+      this.$router.push('/home')
+    }, 2000)
   }
 }
 </script>

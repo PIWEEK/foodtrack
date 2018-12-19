@@ -22,7 +22,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'Home',
       component: Home
     },
@@ -32,7 +32,7 @@ export default new Router({
       component: Dashboard
     },
     {
-      path: '/splash',
+      path: '/',
       name: 'Splash',
       component: Splash
     },
