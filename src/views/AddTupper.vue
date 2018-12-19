@@ -14,7 +14,7 @@
       <div class="form-group">
         <IconUser className="icon-user"></IconUser>
         <label for="servings">Raciones</label>
-        <input id="servings" v-model="servings" placeholder="(pax.)">
+        <input id="servings" type="number" v-model="servings" placeholder="(pax.)">
       </div>
       <div class="form-group">
         <IconDate className="icon-date"></IconDate>
@@ -38,8 +38,9 @@
         <label for="notify-me-at">Avísame en</label>
         <select id="notify-me-at" v-model="notifyMeAt">
           <option selected disabled value="none">Selecciona una opción</option>
-          <option value="one-week">1 week</option>
-          <option value="one-month">1 month</option>
+          <option value="1 day">1 día</option>
+          <option value="1 week">1 semana</option>
+          <option value="1 month">1 mes</option>
         </select>
       </div>
       <div class="btn-icon">
@@ -78,10 +79,19 @@ export default {
   computed: {
     cooked: {
       get() {
-        return moment(this.cookedAt).format('YYYY-MM-DD')
+        return moment(this.cookedAt)
+          .format('YYYY-MM-DD')
       },
       set(newValue) {
         this.cookedAt = new Date(newValue)
+      }
+    },
+    notifyMe: {
+      get() {
+        const [quantity, unit] = this.notifyMeAt.split(' ')
+        return moment(this.cookedAt)
+          .add(parseInt(quantity, 10), unit)
+          .toDate()
       }
     }
   },
@@ -95,8 +105,8 @@ export default {
           content: this.content,
           servings: this.servings,
           storedAt: this.storedAt,
-          cookedAt: '2018-12-19',
-          notifyMeAt: '2018-12-23'
+          cookedAt: this.cookedAt,
+          notifyMeAt: this.notifyMe
         }
         const response = await api.tuppers.addTupper(tupper)
         console.log(response)

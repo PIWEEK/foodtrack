@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from './views/Home.vue'
+import Dashboard from './views/Dashboard.vue'
 import Splash from './views/Splash.vue'
 
 import AddTupper from './views/AddTupper.vue'
@@ -10,6 +11,7 @@ import TupperDetail from './views/TupperDetail.vue'
 import Register from './views/Register.vue'
 import Login from './views/Login.vue'
 import Created from './views/Created.vue'
+import Profile from './views/Profile.vue'
 
 Vue.use(Router)
 
@@ -21,9 +23,19 @@ export default new Router({
       component: Home
     },
     {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard
+    },
+    {
       path: '/splash',
       name: 'Splash',
       component: Splash
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
     },
     {
       path: '/about',

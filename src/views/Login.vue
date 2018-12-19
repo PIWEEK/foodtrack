@@ -36,9 +36,9 @@ export default {
   methods: {
     async submit(e) {
       try {
-        const response = await api.auth.login(this.email, this.password)
-        sessionStorage.setItem('token', response)
-        this.$router.push('Home')
+        const token = await api.auth.login(this.email, this.password)
+        document.cookie = `token=${token}`
+        this.$router.push('/dashboard')
       } catch (error) {
         console.log(error)
       }
