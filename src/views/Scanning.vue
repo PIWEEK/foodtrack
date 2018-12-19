@@ -26,6 +26,7 @@ export default {
     IconTupperNFC
   },
   created() {
+    this.$store.dispatch('nfcCheck')
     nfc.start()
     nfc.on('read', this.handleNFCRead)
   },
@@ -37,8 +38,14 @@ export default {
     nfc.stop()
   },
   methods: {
-    handleNFCRead(e) {
-      console.log(e)
+    handleNFCRead(tagId) {
+      const isNew = !!this.$store.state.tuppers.find(tupper => tupper.tagId === tagId)
+      this.$store.dispatch('tupperRead', { tagId })
+      if (isNew) {
+        this.$router.replace('/add-tupper')
+      } else {
+        this.$router.replace('/tupper-detail')
+      }
     }
   },
   computed: {

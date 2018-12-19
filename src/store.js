@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import nfc from '@/nfc'
 import api from '@/api'
 
 Vue.use(Vuex)
@@ -12,6 +13,9 @@ export default new Vuex.Store({
     },
     tupperEaten: {
       name: ''
+    },
+    tupperRead: {
+      tagId: undefined
     },
     servingEaten: {
       name: '',
@@ -29,12 +33,18 @@ export default new Vuex.Store({
       state.tuppers = payload
     },
     tupperCreated(state, payload) {
+      state.tupperRead.tagId = null
       state.tupperCreated.name = payload.name
     },
     tupperEaten(state, payload) {
+      state.tupperRead.tagId = null
       state.tupperEaten.name = payload.name
     },
+    tupperRead(state, payload) {
+      state.tupperRead.tagId = payload.tagId
+    },
     servingEaten(state, payload) {
+      state.tupperRead.tagId = null
       state.servingEaten.name = payload.name
     },
     nfcCheck(state, payload) {
@@ -59,6 +69,15 @@ export default new Vuex.Store({
     tupperCreated({ commit }, payload) {
       commit('tupperCreated', payload)
     },
+    tupperEaten({ commit }, payload) {
+      commit('tupperEaten', payload)
+    },
+    tupperRead({ commit }, payload) {
+      commit('tupperRead', payload)
+    },
+    servingEaten({ commit }, payload) {
+      commit('servingEaten', payload)
+    },
     nfcCheck({ commit }) {
       return nfc.isEnabled().then(() => {
         commit('nfcCheck', true)
@@ -66,11 +85,5 @@ export default new Vuex.Store({
         commit('nfcCheck', reason)
       })
     },
-    tupperEaten({ commit }, payload) {
-      commit('tupperEaten', payload)
-    },
-    servingEaten({ commit }, payload) {
-      commit('servingEaten', payload)
-    }
   }
 })

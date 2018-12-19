@@ -32,7 +32,8 @@ function handleNdef(e) {
   */
   if (callbacks.has('read')) {
     const callback = callbacks.get('read')
-    callback(e)
+    const id = nfc.bytesToHexString(e.tag.id)
+    callback(id)
   }
 }
 

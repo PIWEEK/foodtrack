@@ -99,7 +99,7 @@ export default {
     async submit(e) {
       try {
         const tupper = {
-          tagId: '11111111',
+          tagId: this.$store.state.tupperRead.tagId,
           tupperId: '1',
           name: this.name,
           content: this.content,
