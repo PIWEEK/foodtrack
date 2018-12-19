@@ -10,7 +10,7 @@ import TupperDetail from './views/TupperDetail.vue'
 
 import Register from './views/Register.vue'
 import Login from './views/Login.vue'
-import Created from './views/Created.vue'
+import TupperCreated from './views/TupperCreated.vue'
 import Profile from './views/Profile.vue'
 
 Vue.use(Router)
@@ -66,9 +66,9 @@ export default new Router({
       component: Register
     },
     {
-      path: '/created',
-      name: 'Created',
-      component: Created
+      path: '/tupper-created',
+      name: 'TupperCreated',
+      component: TupperCreated
     }
 
   ]

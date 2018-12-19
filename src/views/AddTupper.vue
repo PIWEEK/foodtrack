@@ -110,7 +110,10 @@ export default {
         }
         const response = await api.tuppers.addTupper(tupper)
         console.log(response)
-        this.$router.push('Home')
+        this.$store.dispatch('tupperCreated', {
+          name: this.name
+        })
+        this.$router.push('/tupper-created')
       } catch (error) {
         console.log(error)
       }
