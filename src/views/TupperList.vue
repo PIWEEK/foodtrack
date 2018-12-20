@@ -6,16 +6,12 @@
       <button type="button">
         Ordenar
       </button>
-      <div class="tupper" v-for="tupper in freezer" :key="tupper._id">
-        {{tupper.name}}
-      </div>
+      <TupperItem :item="tupper" v-for="tupper in freezer" :key="tupper._id"></TupperItem>
       <h1 class="purple">Nevera</h1>
       <button type="button">
         Ordenar
       </button>
-      <div class="tupper" v-for="tupper in fridge" :key="tupper._id">
-        {{tupper.name}}
-      </div>
+      <TupperItem :item="tupper" v-for="tupper in fridge" :key="tupper._id"></TupperItem>
     </div>
     <div class="free-slots">
       Me quedan <strong>{{slots}} huecos</strong> en el congelador
@@ -31,12 +27,14 @@
 
 <script>
 import Header from '@/components/Header'
+import TupperItem from '@/components/TupperItem'
 import IconNfc from '@/icons/icon-nfc'
 
 export default {
   name: 'TupperList',
   components: {
     Header,
+    TupperItem,
     IconNfc
   },
   created() {
