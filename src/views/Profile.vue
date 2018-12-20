@@ -5,11 +5,11 @@
     <form @submit.prevent="submit">
       <div class="form-group">
         <label for="email">Usuario</label>
-        <input type="email" id="email" name="email" required />
+        <input type="email" id="email" name="email" placeholder="nuevo-email@test.com" required />
       </div>
       <div class="form-group">
         <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" required />
+        <input type="password" id="password" name="password" placeholder="Nueva contraseña" required />
       </div>
       <hr/>
       <h2>Frigoríficos compartidos</h2>
@@ -24,7 +24,7 @@
         </div>
       </div>
       <hr/>
-      <button type="submit">
+      <button class="btn-primary" type="submit">
         Guardar
       </button>
     </form>
@@ -32,11 +32,16 @@
 </template>
 
 <script>
+import Header from '@/components/Header'
+
 export default {
   name: 'Profile',
+  components: {
+    Header
+  },
   data() {
     return {
-
+      fridges: []
     }
   },
   methods: {
