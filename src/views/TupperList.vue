@@ -3,29 +3,17 @@
     <Header></Header>
     <div class="tupper-list">
       <div class="list-header">
-        <h1 class="gradient">Congelador</h1>
+        <h1 class="gradient">{{title}}</h1>
         <div class="tupper-counter">
           <tupper50 className="tupper-50"></tupper50>
-          <span>4 tuppers</span>
+          <span>{{items.length}} tuppers</span>
         </div>
         <div class="tupper-filter">
           <span>ORDENAR</span>
           <IconOrder className="icon-order"></IconOrder>
         </div>
       </div>
-      <TupperItem :item="tupper" v-for="tupper in freezer" :key="tupper._id"></TupperItem>
-      <div class="list-header">
-        <h1 class="gradient">Nevera</h1>
-        <div class="tupper-counter">
-          <tupper50 className="tupper-50"></tupper50>
-          <span>4 tuppers</span>
-        </div>
-        <div class="tupper-filter">
-          <span>ORDENAR</span>
-          <IconOrder className="icon-order"></IconOrder>
-        </div>
-      </div>
-      <TupperItem :item="tupper" v-for="tupper in fridge" :key="tupper._id"></TupperItem>
+      <TupperItem :item="tupper" v-for="tupper in items" :key="tupper._id"></TupperItem>
     </div>
     <div class="free-slots">
       Me quedan <strong>{{slots}} huecos</strong> en el congelador
@@ -67,6 +55,14 @@ export default {
     }
   },
   computed: {
+    title() {
+      return this.view === 'fridge' ? 'Nevera' : 'Congelador'
+    },
+    items() {
+      return this.view === 'fridge'
+        ? this.fridge
+        : this.freezer
+    },
     fridge() {
       return this.$store.state.tuppers
         ? this.$store.state.tuppers.filter(tupper => tupper.storedAt === 'fridge')

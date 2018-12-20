@@ -8,25 +8,11 @@
           <span>Tu nevera está vacía</span>
         </div-->
         <div class="home-fridge-list">
-          <div class="list-item">
-            <h3>Pollo asado con verduras</h3>
+          <div class="list-item" v-for="tupper in fridge" :key="tupper.tagId">
+            <h3>{{tupper.name}}</h3>
             <div class="alarm-date">
               <IconBellGradient className="icon-bell-gradient"></IconBellGradient>
-              <span>HOY</span>
-            </div>
-          </div>
-          <div class="list-item">
-            <h3>Lentejas a la riojana</h3>
-            <div class="alarm-date">
-              <IconBellGradient className="icon-bell-gradient"></IconBellGradient>
-              <span>MAÑANA</span>
-            </div>
-          </div>
-          <div class="list-item">
-            <h3>Croquetas de la mama</h3>
-            <div class="alarm-date">
-              <IconBellGradient className="icon-bell-gradient"></IconBellGradient>
-              <span>12/02/2018</span>
+              <span>{{formatDate(tupper.notifyMeAt)}}</span>
             </div>
           </div>
         </div>
@@ -40,7 +26,7 @@
         </div-->
         <div class="home-cold-list">
           <tupper50 className="tupper-50"></tupper50>
-          <h3>12 tuppers</h3>
+          <h3>{{freezer.length}} tuppers</h3>
         </div>
       </div>
     </div>
@@ -58,18 +44,46 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
-import IconFridge from '@/icons/icon-fridge.vue'
-import IconNfc from '@/icons/icon-nfc.vue'
-import tupper50 from '@/icons/tupper-50.vue'
-import IconBellGradient from '@/icons/icon-bell-gradient.vue'
+import moment from 'moment'
+
+import Header from '@/components/Header'
+import IconFridge from '@/icons/icon-fridge'
+import IconNfc from '@/icons/icon-nfc'
+import tupper50 from '@/icons/tupper-50'
+import IconBellGradient from '@/icons/icon-bell-gradient'
 
 export default {
   name: 'Dashboard',
-  components: { Header, IconFridge, IconNfc, tupper50, IconBellGradient },
+  components: {
+    Header,
+    IconFridge,
+    IconNfc,
+    IconBellGradient,
+    tupper50,
+  },
   data() {
     return {
 
+    }
+  },
+  methods: {
+    formatDate(date) {
+      return moment(date).fromNow(true)
+    }
+  },
+  computed: {
+    fridge() {
+      const fridge = this.$store.state.tuppers
+        ? this.$store.state.tuppers.filter(tupper => tupper.storedAt === 'fridge')
+        : []
+
+      fridge.sort((a, b) => a.notifyMeAt - b.notifyMeAt)
+      return fridge
+    },
+    freezer() {
+      return this.$store.state.tuppers
+        ? this.$store.state.tuppers.filter(tupper => tupper.storedAt === 'freezer')
+        : []
     }
   }
 }

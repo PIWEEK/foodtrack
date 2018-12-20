@@ -25,8 +25,8 @@ export default new Vuex.Store({
     },
     tuppers: [
       {
-        tagId: 'asdsadasdsad',
-        tupperId: 'asdasdadasd',
+        tagId: '0cc175b9c0f1b6a831c399e269772661',
+        tupperId: 'a',
         name: 'Pollo al Curry',
         content: 'Al rico pollo al curry con su arrocito y sus mandangas',
         created: moment().toDate(),
@@ -37,8 +37,8 @@ export default new Vuex.Store({
         servings: 1
       },
       {
-        tagId: 'asdsadasdsad',
-        tupperId: 'asdasdadasd',
+        tagId: '92eb5ffee6ae2fec3ad71c777531578f',
+        tupperId: 'b',
         name: 'Paella de verduras',
         content: 'Paellita ipsum dolor sit amet, c\'est la vie, garçon',
         created: moment().toDate(),

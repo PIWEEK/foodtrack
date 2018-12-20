@@ -1,7 +1,10 @@
 import Vue from 'vue'
+import moment from 'moment'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+
+moment.locale('es')
 
 Vue.config.productionTip = false
 

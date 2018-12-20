@@ -1,7 +1,7 @@
 <template>
   <div class="profile">
     <Header></Header>
-    <h1>Perfil</h1>
+    <h1 class="purple">Perfil</h1>
     <form @submit.prevent="submit">
       <div class="form-group">
         <label for="email">Usuario</label>
