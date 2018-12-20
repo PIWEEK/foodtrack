@@ -3,7 +3,7 @@
     <Header></Header>
     <p>Se ha guardado tu tupper de</p>
     <IconTupperOk className="white"></IconTupperOk>
-    <h1>{{ name }}</h1>
+    <h1>{{ name }} Pollo al curry</h1>
     <router-link tag="button" class="btn-primary btn-line-transparent" to="/dashboard">
       ¡OK!
     </router-link>
@@ -44,13 +44,14 @@ export default {
   p {
     margin-top: 6rem;
     margin-bottom: 2rem;
-    font-size: 2rem;
+    font-size: 1.4rem;
+    text-align: center;
   }
 
   h1 {
-    margin-top: 2rem;
+    margin-top: 3rem;
     margin-bottom: 4rem;
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
 
