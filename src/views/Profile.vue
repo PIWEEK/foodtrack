@@ -24,7 +24,7 @@
         </div>
       </div>
       <hr/>
-      <button type="submit">
+      <button class="btn-primary" type="submit">
         Guardar
       </button>
     </form>
@@ -32,11 +32,16 @@
 </template>
 
 <script>
+import Header from '@/components/Header'
+
 export default {
   name: 'Profile',
+  components: {
+    Header
+  },
   data() {
     return {
-
+      fridges: []
     }
   },
   methods: {

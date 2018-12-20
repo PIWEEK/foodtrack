@@ -3,18 +3,18 @@
     <div class="row-flex">
       <h3>{{item.name}}</h3>
       <div class="poo-date">
-        <span>2 meses</span>
+        <span>{{notifyMe}}</span>
         <IconBell className="icon-bell"></IconBell>
       </div>
     </div>
     <div class="row-flex">
       <div class="pax">
         <IconUser className="icon-user"></IconUser>
-        <span>2 rac</span>
+        <span>{{item.servings}} rac.</span>
       </div>
       <div class="date">
         <IconDate className="icon-date"></IconDate>
-        <span>12/05/2018</span>
+        <span>{{cooked}}</span>
       </div>
       <IconTrash className="icon-trash"></IconTrash>
     </div>
@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 import IconBell from '@/icons/icon-bell.vue'
 import IconUser from '@/icons/icon-user.vue'
 import IconDate from '@/icons/icon-date.vue'
@@ -29,9 +31,22 @@ import IconTrash from '@/icons/icon-trash.vue'
 
 export default {
   name: 'TupperItem',
-  components: { IconBell, IconUser, IconDate, IconTrash },
+  components: {
+    IconBell,
+    IconUser,
+    IconDate,
+    IconTrash
+  },
   props: {
     item: Object
+  },
+  computed: {
+    notifyMe() {
+      return moment(this.item.notifyMeAt).fromNow(true)
+    },
+    cooked() {
+      return moment(this.item.cookedAt).format('DD/MM/YYYY')
+    }
   }
 }
 </script>
