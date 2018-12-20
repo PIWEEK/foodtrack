@@ -1,5 +1,6 @@
 <template>
   <div class="scanning">
+    <Header></Header>
     <h1 class="scanning-title">{{message}}</h1>
     <!-- TODO: Añadir circulo de cargando -->
     <div :class="scanningClass">
@@ -18,10 +19,12 @@
 import nfc from '@/nfc'
 import IconTupperNFC from '@/icons/tupper-nfc'
 import IconNFC from '@/icons/icon-nfc'
+import Header from '@/components/Header.vue'
 
 export default {
   name: 'Scanning',
   components: {
+    Header,
     IconNFC,
     IconTupperNFC
   },
@@ -82,9 +85,10 @@ export default {
 
 <style lang="scss">
 .scanning-title {
-  text-align: center;
   color: white;
-  margin-bottom: 2rem;
+  font-weight: bold;
+  margin: 2rem;
+  text-align: center;
 }
 
 .scanning {
@@ -92,6 +96,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 75vh;
 }
 
 .scanning-loader {

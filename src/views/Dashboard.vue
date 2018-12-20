@@ -54,7 +54,6 @@
       <IconFridge className="icon-fridge"></IconFridge>
       <span>Compartir frigorífico</span>
     </button>
-    </div>
   </div>
 </template>
 

@@ -9,24 +9,27 @@
     </div>
     <div class="row-flex">
       <div class="pax">
-        <IconBell className="icon-bell"></IconBell>
+        <IconUser className="icon-user"></IconUser>
         <span>2 rac</span>
       </div>
       <div class="date">
-        <IconBell className="icon-bell"></IconBell>
+        <IconDate className="icon-date"></IconDate>
         <span>12/05/2018</span>
       </div>
-      <IconBell className="icon-bell"></IconBell>
+      <IconTrash className="icon-trash"></IconTrash>
     </div>
   </div>
 </template>
 
 <script>
 import IconBell from '@/icons/icon-bell.vue'
+import IconUser from '@/icons/icon-user.vue'
+import IconDate from '@/icons/icon-date.vue'
+import IconTrash from '@/icons/icon-trash.vue'
 
 export default {
   name: 'TupperItem',
-  components: { IconBell },
+  components: { IconBell, IconUser, IconDate, IconTrash },
   props: {
     item: Object
   }
@@ -36,15 +39,21 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .tupper {
-  border-bottom: 1px solid $dark-shade-25;
+  border-bottom: 1px solid $dark-shade-5;
   display: flex;
   flex-direction: column;
   padding: 1rem 0;
 
   .row-flex {
+    align-items: center;
+
     h3 {
+      font-size: 1.1rem;
+      font-weight: bold;
+      line-height: 1.5;
       max-height: 55px;
       overflow: hidden;
+      max-width: 55%;
     }
   }
 }
@@ -59,13 +68,14 @@ export default {
   color: white;
   display: flex;
   margin-left: auto;
-  padding: .4rem .6rem;
+  padding: .3rem .6rem;
   justify-content: center;
   width: 125px;
 
   span {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
+    text-transform: uppercase;
   }
 
   svg {
@@ -73,5 +83,26 @@ export default {
     margin-left: .6rem;
     width: 12px;
   }
+}
+
+.pax,
+.date {
+  align-items: center;
+  color: $dark-shade-75;
+  display: flex;
+  margin-right: 1.4rem;
+
+  svg {
+    fill: $dark-shade-50;
+    margin-right: .6rem;
+    width: 14px;
+  }
+}
+
+.icon-trash {
+  fill: $red;
+  height: 20px;
+  margin-left: auto;
+  width: 15px;
 }
 </style>

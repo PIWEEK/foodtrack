@@ -64,3 +64,20 @@ export default {
   }
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss">
+.tuppers {
+  .btn-icon {
+    svg {
+      top: 12px;
+    }
+  }
+}
+
+.free-slots {
+  color: $dark-shade-50;
+  margin-top: 1rem;
+  text-align: center;
+}
+</style>
