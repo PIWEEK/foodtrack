@@ -4,18 +4,43 @@
     <div class="fridge-content">
       <button class="btn-primary btn-line">NEVERA</button>
       <div class="fridge-tuppers">
-        <div class="tupperholder">
-          <tupper50 className="tupper-50"></tupper50>
+        <!--div class="tupperholder">
           <span>Tu nevera está vacía</span>
+        </div-->
+        <div class="home-fridge-list">
+          <div class="list-item">
+            <h3>Pollo asado con verduras</h3>
+            <div class="alarm-date">
+              <IconBellGradient className="icon-bell-gradient"></IconBellGradient>
+              <span>HOY</span>
+            </div>
+          </div>
+          <div class="list-item">
+            <h3>Lentejas a la riojana</h3>
+            <div class="alarm-date">
+              <IconBellGradient className="icon-bell-gradient"></IconBellGradient>
+              <span>MAÑANA</span>
+            </div>
+          </div>
+          <div class="list-item">
+            <h3>Croquetas de la mama</h3>
+            <div class="alarm-date">
+              <IconBellGradient className="icon-bell-gradient"></IconBellGradient>
+              <span>12/02/2018</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="cold-content">
       <button class="btn-primary btn-line">CONGELADOR</button>
       <div class="cold-tuppers">
-        <div class="tupperholder">
-          <tupper50 className="tupper-50"></tupper50>
+        <!--div class="tupperholder">
           <span>Tu congelador está vacío</span>
+        </div-->
+        <div class="home-cold-list">
+          <tupper50 className="tupper-50"></tupper50>
+          <h3>12 tuppers</h3>
         </div>
       </div>
     </div>
@@ -38,10 +63,11 @@ import Header from '@/components/Header.vue'
 import IconFridge from '@/icons/icon-fridge.vue'
 import IconNfc from '@/icons/icon-nfc.vue'
 import tupper50 from '@/icons/tupper-50.vue'
+import IconBellGradient from '@/icons/icon-bell-gradient.vue'
 
 export default {
   name: 'Dashboard',
-  components: { Header, IconFridge, IconNfc, tupper50 },
+  components: { Header, IconFridge, IconNfc, tupper50, IconBellGradient },
   data() {
     return {
 
@@ -73,7 +99,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin: .5rem 0;
-  padding: 1rem;
+  padding: .8rem;
   position: relative;
 
   .btn-line {
@@ -82,11 +108,11 @@ export default {
 }
 
 .fridge-content {
-  min-height: 30vh;
+  min-height: 35vh;
 }
 
 .cold-content {
-  min-height: 20vh;
+  min-height: 12vh;
   &::after,
   &::before {
     border: 6px solid $dark-shade-5;
@@ -120,7 +146,79 @@ export default {
 
   svg {
     fill: $dark-shade-50;
-    margin-bottom: 1.5rem;
+    margin-bottom: .5rem;
+    width: 40px;
+  }
+}
+
+.home-fridge-list {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  padding-top: .4rem;
+}
+
+.list-item {
+  border: 1px solid $dark-shade-25;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: .4rem;
+  padding: .8rem 1rem;
+
+  &:first-child {
+    flex: auto;
+
+    h3 {
+      font-weight: bold;
+    }
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    max-height: 55px;
+    overflow: hidden;
+  }
+
+  .alarm-date {
+    align-items: center;
+    display: flex;
+    margin-top: .8rem;
+
+    svg {
+      margin-right: .5rem;
+    }
+
+    span {
+      color: $dark-shade-50;
+      text-transform: uppercase;
+      font-size: .8rem;
+      font-weight: bold;
+    }
+  }
+}
+
+.home-cold-list {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  padding: .8rem .8rem 0 .8rem;
+  flex: 1;
+  justify-content: center;
+
+  svg {
+    fill: black;
+    margin-right: 1rem;
+    width: 40px;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
   }
 }
 </style>
