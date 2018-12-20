@@ -59,7 +59,7 @@ export default {
     IconFridge,
     IconNfc,
     IconBellGradient,
-    tupper50,
+    tupper50
   },
   data() {
     return {

@@ -1,0 +1,13 @@
+<template>
+  <svg :class="className" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0.86953 0L0 0.869632L9.13047 10L0 19.1305L0.86953 20L10 10.8695L19.1305 20L20 19.1305L10.8695 10L20 0.869632L19.1305 0L10 9.13048L0.86953 0Z"/>
+  </svg>
+</template>
+
+<script>
+export default {
+  props: {
+    className: String
+  }
+}
+</script>
