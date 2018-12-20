@@ -1,7 +1,7 @@
 import Status from 'http-status-codes'
 import axios from './axios'
 
-export async function addTupper(tupper) {
+export async function create(tupper) {
   const response = await axios.post('/tuppers/', {
     tagId: tupper.tagId,
     tupperId: tupper.tupperId,
@@ -23,9 +23,33 @@ export async function list() {
   return response.data
 }
 
+export async function eatServing(tupper, servings) {
+  const response = await axios.put(`/tuppers/${tupper._id}`, {
+    servings: -servings
+  })
+  return response.data
+}
+
+export async function eatWhole(tupper) {
+  const response = await axios.put(`/tuppers/${tupper._id}`, {
+    servings: 0
+  })
+  return response.data
+}
+
+export async function move(tupper, storedAt) {
+  const response = await axios.put(`/tuppers/${tupper._id}`, {
+    storedAt
+  })
+  return response.data
+}
+
 export default {
-  addTupper,
-  list
+  create,
+  list,
+  eatServing,
+  eatWhole,
+  move
 }
 
 // console.log(response.data);

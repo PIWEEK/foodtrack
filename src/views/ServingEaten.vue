@@ -5,7 +5,7 @@
     <IconTupperOk className="white"></IconTupperOk>
     <h1>{{ name }}</h1>
     <p>Me {{ verb }} {{ availableServings }}</p>
-    <router-link tag="button" to="/dashboard">
+    <router-link class="btn-primary btn-line-transparent" tag="button" to="/dashboard">
       ¡OK!
     </router-link>
   </div>
@@ -21,7 +21,7 @@ export default {
     Header,
     IconTupperOk
   },
-  created() {
+  mounted() {
     document.body.classList.add('done')
   },
   destroyed() {

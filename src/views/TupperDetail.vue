@@ -18,7 +18,7 @@
       <IconDate className="icon-data"></IconDate>
       <span>{{notifyMeAt}}</span>
     </div>
-    <button class="btn-primary">
+    <button class="btn-primary" @click.prevent="eatWhole">
       COMÉRMELO
     </button>
     <a class="delete-link" href="#" @click.prevent="remove">
@@ -26,21 +26,19 @@
       <span>ELIMINAR</span>
     </a>
     <hr/>
-    <h5 class="small">COMER POR RACIONES</h5>
-    <div class="row-flex">
-      <button class="btn-primary btn-line">
-        <tupper50 className="tupper-50"></tupper50>
-        <span>1 RACIÓN</span>
-     </button>
-      <button class="btn-primary btn-line">
-        <tupper50 className="tupper-50"></tupper50>
-        <span>1 RACIÓN</span>
-     </button>
+    <div class="eat-by-serving" v-if="servings > 1">
+      <h5 class="small">COMER POR RACIONES</h5>
+      <div class="row-flex">
+        <button class="btn-primary btn-line" v-for="serving in servingsList" :key="serving" @click.prevent="eatServing(serving)">
+          <tupper50 className="tupper-50"></tupper50>
+          <span>{{serving}} {{servingNoun(serving)}}</span>
+      </button>
+      </div>
     </div>
     <h5 class="small">MOVER</h5>
-    <button class="btn-primary btn-line">
+    <button class="btn-primary btn-line" @click.prevent="moveTo">
       <IconFridge className="icon-fridge"></IconFridge>
-      <span>MOVER A LA NEVERA</span>
+      <span>{{moveToMessage}}</span>
     </button>
   </div>
 </template>
@@ -80,6 +78,13 @@ export default {
     servings() {
       return this.$store.state.tupperRead.servings
     },
+    servingsList() {
+      const servings = []
+      for (let index = 0; index < this.servings - 1; index++) {
+        servings.push(index + 1)
+      }
+      return servings
+    },
     cookedAt() {
       return moment(this.$store.state.tupperRead.cookedAt).format('DD/MM/YYYY')
     },
@@ -88,9 +93,29 @@ export default {
     },
     notifyMeAt() {
       return moment(this.$store.state.tupperRead.notifyMeAt).fromNow(true)
+    },
+    moveToMessage() {
+      return this.$store.state.tupperRead.storedAt === 'fridge' ? 'Mover al congelador' : 'Mover a la nevera'
     }
   },
   methods: {
+    servingNoun(servings) {
+      return servings === 1 ? 'RACIÓN' : 'RACIONES'
+    },
+    async eatServing(quantity) {
+      console.log(quantity)
+      await this.$store.dispatch('tupperEatServing', {
+        quantity
+      })
+      this.$router.replace('/tupper-eaten')
+    },
+    async eatWhole() {
+      await this.$store.dispatch('tupperEatWhole')
+      this.$router.replace('/tupper-eaten')
+    },
+    moveTo() {
+      this.$store.dispatch('tupperMove')
+    },
     remove() {
       console.log('Eliminar')
     }

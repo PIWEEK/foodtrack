@@ -60,9 +60,12 @@ import IconCheck from '@/icons/icon-check.vue'
 import IconUser from '@/icons/icon-user.vue'
 
 export default {
-  name: 'AddTupper',
+  name: 'TupperCreate',
   components: {
-    Header, IconDate, IconCheck, IconUser
+    Header,
+    IconDate,
+    IconCheck,
+    IconUser
   },
   data() {
     return {
@@ -98,7 +101,7 @@ export default {
   methods: {
     async submit(e) {
       try {
-        const tupper = {
+        await this.$store.dispatch('tupperCreate', {
           tagId: this.$store.state.tupperRead.tagId,
           tupperId: '1',
           name: this.name,
@@ -107,11 +110,6 @@ export default {
           storedAt: this.storedAt,
           cookedAt: this.cookedAt,
           notifyMeAt: this.notifyMe
-        }
-        const response = await api.tuppers.addTupper(tupper)
-        console.log(response)
-        this.$store.dispatch('tupperCreated', {
-          name: this.name
         })
         this.$router.push('/tupper-created')
       } catch (error) {

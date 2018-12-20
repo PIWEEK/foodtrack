@@ -70,7 +70,9 @@ export default new Vuex.Store({
       state.tupperRead.tagId = payload.tagId
       const tupper = state.tuppers.find((tupper) => tupper.tagId === payload.tagId)
       if (tupper) {
+        state.tupperRead._id = tupper._id
         state.tupperRead.name = tupper.name
+        state.tupperRead.tupperId = tupper.tupperId
         state.tupperRead.content = tupper.content
         state.tupperRead.storedAt = tupper.storedAt
         state.tupperRead.servings = tupper.servings
@@ -78,9 +80,27 @@ export default new Vuex.Store({
         state.tupperRead.notifyMeAt = tupper.notifyMeAt
       }
     },
-    servingEaten(state, payload) {
+    tupperEatWhole(state, payload) {
+      const tupper = state.tuppers.find(tupper => tupper._id === payload._id)
+      state.servingEaten.servings = tupper.servings
+      tupper.servings = 0
+      state.servingEaten.name = tupper.name
+      state.servingEaten.availableServings = tupper.servings
+      state.tupperRead.servings = 0
+    },
+    tupperEatServing(state, payload) {
+      const tupper = state.tuppers.find(tupper => tupper._id === payload._id)
+      tupper.servings -= payload.servings
+      state.tupperRead.servings -= payload.servings
+      state.servingEaten.name = tupper.name
+      state.servingEaten.servings = payload.servings
+      state.servingEaten.availableServings = tupper.servings
       state.tupperRead.tagId = null
-      state.servingEaten.name = payload.name
+    },
+    tupperMove(state, payload) {
+      const tupper = state.tuppers.find(tupper => tupper._id === payload._id)
+      tupper.storedAt = payload.storedAt
+      state.tupperRead.storedAt = payload.storedAt
     },
     nfcCheck(state, payload) {
       if (payload === true) {
@@ -101,6 +121,13 @@ export default new Vuex.Store({
         commit('tupperList', tuppers)
       })
     },
+    tupperCreate({ dispatch }, payload) {
+      return api.tuppers.create(payload).then(() => {
+        return dispatch('tupperCreated', {
+          name: payload.name
+        })
+      })
+    },
     tupperCreated({ commit }, payload) {
       commit('tupperCreated', payload)
     },
@@ -110,8 +137,37 @@ export default new Vuex.Store({
     tupperRead({ commit }, payload) {
       commit('tupperRead', payload)
     },
-    servingEaten({ commit }, payload) {
-      commit('servingEaten', payload)
+    tupperEatServing({ state, commit }, payload) {
+      console.log('tupperEatServing', payload)
+      return api.tuppers.eatServing({
+        _id: state.tupperRead._id
+      }, payload.quantity).then(() => {
+        commit('tupperEatServing', {
+          _id: state.tupperRead._id,
+          servings: payload.quantity
+        })
+      })
+    },
+    tupperEatWhole({ state, commit }, payload) {
+      console.log('tupperEatWhole', payload)
+      return api.tuppers.eatWhole({ _id: state.tupperRead._id })
+        .then(() => {
+          commit('tupperEatWhole', {
+            _id: state.tupperRead._id,
+            servings: 0
+          })
+        })
+    },
+    tupperMove({ state, commit }, payload) {
+      return api.tuppers.move({
+        _id: state.tupperRead._id
+      }, state.tupperRead.storedAt === 'fridge' ? 'freezer' : 'fridge')
+        .then(() => {
+          commit('tupperMove', {
+            _id: state.tupperRead._id,
+            storedAt: state.tupperRead.storedAt === 'fridge' ? 'freezer' : 'fridge'
+          })
+        })
     },
     nfcCheck({ commit }) {
       return nfc.isEnabled().then(() => {

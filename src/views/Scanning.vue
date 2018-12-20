@@ -47,7 +47,7 @@ export default {
       if (tupper) {
         this.$router.replace('/tupper-detail')
       } else {
-        this.$router.replace('/add-tupper')
+        this.$router.replace('/tupper-creation')
       }
     }
   },

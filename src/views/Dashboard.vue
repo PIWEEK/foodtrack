@@ -8,7 +8,7 @@
           <span>Tu nevera está vacía</span>
         </div>
         <div class="home-fridge-list" v-else>
-          <div class="list-item" v-for="tupper in fridge" :key="tupper.tagId">
+          <div class="list-item" v-for="tupper in fridge" :key="tupper.tagId" @click.prevent="detail(tupper)">
             <h3>{{tupper.name}}</h3>
             <div class="alarm-date">
               <IconBellGradient className="icon-bell-gradient"></IconBellGradient>
@@ -65,6 +65,10 @@ export default {
     this.$store.dispatch('tupperList')
   },
   methods: {
+    detail(tupper) {
+      this.$store.dispatch('tupperRead', { tagId: tupper.tagId })
+      this.$router.replace('/tupper-detail')
+    },
     formatDate(date) {
       return moment(date).fromNow(true)
     }

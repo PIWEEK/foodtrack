@@ -9,7 +9,7 @@ import Register from './views/Register.vue'
 import Login from './views/Login.vue'
 import Profile from './views/Profile.vue'
 
-import AddTupper from './views/AddTupper.vue'
+import TupperCreation from './views/TupperCreation.vue'
 import TupperDetail from './views/TupperDetail.vue'
 import TupperCreated from './views/TupperCreated.vue'
 import TupperEaten from './views/TupperEaten.vue'
@@ -50,9 +50,9 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path: '/add-tupper',
-      name: 'AddTupper',
-      component: AddTupper
+      path: '/tupper-creation',
+      name: 'TupperCreation',
+      component: TupperCreation
     },
     {
       path: '/tupper-detail',
