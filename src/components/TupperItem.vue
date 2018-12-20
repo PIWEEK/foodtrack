@@ -83,6 +83,10 @@ export default {
     margin-left: .6rem;
     width: 12px;
   }
+
+  &.deadline {
+    background: $red;
+  }
 }
 
 .pax,
