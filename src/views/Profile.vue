@@ -12,33 +12,38 @@
         <input type="password" id="password" name="password" placeholder="Nueva contraseña" required />
       </div>
       <hr/>
-      <h2>Frigoríficos compartidos</h2>
+      <h1 class="gradient">Frigoríficos compartidos</h1>
       <div class="fridges">
         <div class="fridge" v-for="fridge in fridges" :key="fridge._id">
           <h3>{{fridge.name}}</h3>
           <div class="users">
-            <div class="user" v-for="user in fridge.users" :key="user._id">
-              {{user.email}}
+            <div class="pax" v-for="user in fridge.users" :key="user._id">
+              <IconUser className="icon-user"></IconUser>
+              <span>{{user.name}}</span>
             </div>
           </div>
         </div>
       </div>
       <hr/>
-      <button class="btn-primary" type="submit">
-        Guardar
-      </button>
+      <div class="btn-icon">
+        <IconCheck className="icon-check"></IconCheck>
+        <button class="btn-primary btn-green" type="submit">Guardar</button>
+      </div>
+      <a class="delete-link" href="#">
+        <span>CERRAR SESIÓN</span>
+      </a>
     </form>
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header'
+import IconUser from '@/icons/icon-user.vue'
+import IconCheck from '@/icons/icon-check.vue'
 
 export default {
   name: 'Profile',
-  components: {
-    Header
-  },
+  components: { Header, IconUser, IconCheck },
   data() {
     return {
       fridges: []
@@ -51,3 +56,34 @@ export default {
   }
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss">
+.profile {
+  h3 {
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+}
+
+.delete-link {
+  align-items: center;
+  display: flex;
+  color: $red;
+  font-size: 14px;
+  justify-content: center;
+  margin-top: 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  svg {
+    fill: $red;
+    margin-right: 1rem;
+    width: 14px;
+  }
+
+  span {
+    font-weight: bold;
+  }
+}
+</style>

@@ -58,6 +58,7 @@ h1.gradient {
 hr {
   border: 1px solid $dark-shade-25;
   margin: 1.5rem 0;
+  opacity: .4;
 }
 
 // BUTTONS
