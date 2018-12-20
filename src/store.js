@@ -34,7 +34,7 @@ export default new Vuex.Store({
         storedAt: 'fridge',
         cookedAt: moment().toDate(),
         notifyMeAt: moment().add(2, 'days').toDate(),
-        servings: 2
+        servings: 1
       },
       {
         tagId: 'asdsadasdsad',

@@ -45,6 +45,16 @@ h1.purple {
   margin: 1rem 0 2rem 0;
 }
 
+h1.gradient {
+  background: -webkit-linear-gradient(0deg, #6C63FF 0%, #F8A4D8 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: $purple;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  margin: 1rem 0 2rem 0;
+}
+
 hr {
   border: 1px solid $dark-shade-25;
   margin: 1.5rem 0;
