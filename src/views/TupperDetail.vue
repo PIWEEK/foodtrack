@@ -5,21 +5,23 @@
       <tupper50 className="tupper-50"></tupper50>
       <span>{{name}}</span>
     </h2>
-    <p>{{description}}</p>
+    <p>{{content}}</p>
     <div class="row-flex">
       <IconUser className="icon-user"></IconUser>
       <span>{{servings}} raciones</span>
     </div>
     <div class="row-flex">
       <IconCold className="icon-cold"></IconCold>
-      <span>{{location}}</span>
+      <span>{{storedAt}}</span>
     </div>
     <div class="row-flex">
       <IconDate className="icon-data"></IconDate>
-      <span>{{notifyMe}}</span>
+      <span>{{notifyMeAt}}</span>
     </div>
-    <input class="btn-primary" type="submit" value="COMÉRMELO">
-    <a class="delete-link" href="#">
+    <button class="btn-primary">
+      COMÉRMELO
+    </button>
+    <a class="delete-link" href="#" @click.prevent="remove">
       <IconTrash className="icon-trash"></IconTrash>
       <span>ELIMINAR</span>
     </a>
@@ -86,6 +88,11 @@ export default {
     },
     notifyMeAt() {
       return moment(this.$store.state.tupperRead.notifyMeAt).fromNow(true)
+    }
+  },
+  methods: {
+    remove() {
+      console.log('Eliminar')
     }
   }
 }

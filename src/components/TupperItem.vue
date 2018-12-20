@@ -1,5 +1,5 @@
 <template>
-  <div class="tupper">
+  <div class="tupper" @click="detail">
     <div class="row-flex">
       <h3>{{item.name}}</h3>
       <div class="poo-date">
@@ -46,6 +46,12 @@ export default {
     },
     cooked() {
       return moment(this.item.cookedAt).format('DD/MM/YYYY')
+    }
+  },
+  methods: {
+    detail() {
+      this.$store.dispatch('tupperRead', { tagId: this.item.tagId })
+      this.$router.replace('/tupper-detail')
     }
   }
 }
