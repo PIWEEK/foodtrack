@@ -91,7 +91,7 @@ export default {
   margin-left: auto;
   padding: .3rem .6rem;
   justify-content: center;
-  width: 125px;
+  width: 110px;
 
   span {
     font-size: 12px;
