@@ -6,6 +6,7 @@
     <MainLogo className="foodtrack-logo"></MainLogo>
     <div class="user-zone">
       <router-link to="/notifications">
+        <span class="alert-dot"></span>
         <IconBell className="icon-bell"></IconBell>
       </router-link>
       <router-link to="/profile">
@@ -56,10 +57,6 @@ export default {
   margin: auto;
 }
 
-.trigger-menu {
-
-}
-
 .icon-bell {
   fill: $purple;
 }
@@ -68,12 +65,29 @@ export default {
 }
 .icon-home {
   fill: $purple;
+  left: 1.5rem;
+  position: absolute;
+  top: 1.3rem;
 }
 
 .user-zone {
   display: flex;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.3rem;
   :last-child {
     margin-left: .5rem;
   }
+}
+
+.alert-dot {
+  background: $red;
+  border-radius: 50%;
+  border: 2px solid white;
+  height: 8px;
+  position: absolute;
+  top: .1rem;
+  right: 2.1rem;
+  width: 8px;
 }
 </style>
