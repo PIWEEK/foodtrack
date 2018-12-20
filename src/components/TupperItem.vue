@@ -16,7 +16,9 @@
         <IconDate className="icon-date"></IconDate>
         <span>{{cooked}}</span>
       </div>
-      <IconTrash className="icon-trash"></IconTrash>
+      <a href="#" @click.prevent="remove">
+        <IconTrash className="icon-trash"></IconTrash>
+      </a>
     </div>
   </div>
 </template>
@@ -49,6 +51,11 @@ export default {
     }
   },
   methods: {
+    remove() {
+      this.$store.dispatch('lightboxConfirmRemove', {
+        _id: this.item._id
+      })
+    },
     detail() {
       this.$store.dispatch('tupperRead', { tagId: this.item.tagId })
       this.$router.replace('/tupper-detail')

@@ -1,9 +1,9 @@
 <template>
-  <div class="lightbox">
+
     <div class="lightbox-content">
       <div class="lightbox-header">
         <h2>COMPARTIR FRIGORÍFICO</h2>
-        <span class="close">
+        <span class="close" @click.prevent="close">
           <IconClose className="icon-close"></IconClose>
         </span>
       </div>
@@ -14,14 +14,35 @@
         </div>
       </div>
       <div class="lightbox-btn">
-        <button class="btn-primary btn-green">ENVIAR</button>
+        <button class="btn-primary btn-green" @click.prevent="send">
+          ENVIAR
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import IconClose from '@/icons/icon-close'
+
 export default {
-  name: 'ShareFridge'
+  name: 'ShareFridge',
+  components: {
+    IconClose
+  },
+  data() {
+    return {
+      email: ''
+    }
+  },
+  methods: {
+    close() {
+      this.$store.dispatch('lightboxNone')
+    },
+    send() {
+      console.info('TODO: Send invitation')
+      this.$store.dispatch('lightboxNone')
+    }
+  }
 }
 </script>

@@ -111,7 +111,7 @@ export default {
           cookedAt: this.cookedAt,
           notifyMeAt: this.notifyMe
         })
-        this.$router.push('/tupper-created')
+        this.$router.replace('/tupper-created')
       } catch (error) {
         console.log(error)
       }

@@ -1,8 +1,20 @@
 <template>
   <div id="app">
     <router-view/>
+    <Lightboxes></Lightboxes>
   </div>
 </template>
+
+<script>
+import Lightboxes from '@/components/Lightboxes'
+
+export default {
+  name: 'App',
+  components: {
+    Lightboxes
+  }
+}
+</script>
 
 <style lang="scss">
 body {

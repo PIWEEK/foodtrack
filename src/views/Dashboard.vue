@@ -36,7 +36,7 @@
         Escanear NFC
       </router-link>
     </div>
-    <button class="btn-primary btn-line">
+    <button class="btn-primary btn-line" @click.prevent="shareFridge">
       <IconFridge className="icon-fridge"></IconFridge>
       <span>Compartir frigorífico</span>
     </button>
@@ -68,6 +68,9 @@ export default {
     detail(tupper) {
       this.$store.dispatch('tupperRead', { tagId: tupper.tagId })
       this.$router.replace('/tupper-detail')
+    },
+    shareFridge() {
+      this.$store.dispatch('lightboxShareFridge')
     },
     formatDate(date) {
       return moment(date).fromNow(true)

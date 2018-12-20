@@ -9,6 +9,10 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    lightbox: 'none',
+    confirmRemove: {
+      _id: null
+    },
     tupperCreated: {
       name: ''
     },
@@ -102,6 +106,22 @@ export default new Vuex.Store({
       tupper.storedAt = payload.storedAt
       state.tupperRead.storedAt = payload.storedAt
     },
+    tupperRemove(state, payload) {
+      state.tupperRead.tagId = null
+    },
+    lightboxNone(state, payload) {
+      state.lightbox = 'none'
+    },
+    lightboxShareFridge(state, payload) {
+      state.lightbox = 'share-fridge'
+    },
+    lightboxConfirmRemove(state, payload) {
+      state.lightbox = 'confirm-remove'
+      state.confirmRemove._id = payload._id
+    },
+    lightboxAlert(state, payload) {
+      state.lightbox = 'alert'
+    },
     nfcCheck(state, payload) {
       if (payload === true) {
         state.nfc.isEnabled = payload
@@ -168,6 +188,26 @@ export default new Vuex.Store({
             storedAt: state.tupperRead.storedAt === 'fridge' ? 'freezer' : 'fridge'
           })
         })
+    },
+    tupperRemove({ state, commit }) {
+      commit('lightboxNone')
+      return api.tuppers.remove({
+        _id: state.confirmRemove._id
+      }).then(() => {
+        commit('tupperRemove')
+      })
+    },
+    lightboxNone({ commit }, payload) {
+      commit('lightboxNone', payload)
+    },
+    lightboxAlert({ commit }, payload) {
+      commit('lightboxAlert', payload)
+    },
+    lightboxConfirmRemove({ commit }, payload) {
+      commit('lightboxConfirmRemove', payload)
+    },
+    lightboxShareFridge({ commit }, payload) {
+      commit('lightboxShareFridge', payload)
     },
     nfcCheck({ commit }) {
       return nfc.isEnabled().then(() => {

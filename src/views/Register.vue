@@ -45,7 +45,7 @@ export default {
       try {
         const response = await api.users.register(this.name, this.email, this.password)
         console.log(response)
-        this.$router.push('/home')
+        this.$router.replace('/home')
       } catch (error) {
         console.log(error)
       }

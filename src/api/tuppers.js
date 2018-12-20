@@ -44,12 +44,18 @@ export async function move(tupper, storedAt) {
   return response.data
 }
 
+export async function remove(tupper) {
+  const response = await axios.delete(`/tuppers/${tupper._id}`)
+  return response.data
+}
+
 export default {
   create,
   list,
   eatServing,
   eatWhole,
-  move
+  move,
+  remove
 }
 
 // console.log(response.data);

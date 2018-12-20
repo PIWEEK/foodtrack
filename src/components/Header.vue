@@ -5,10 +5,10 @@
     </router-link>
     <MainLogo className="foodtrack-logo"></MainLogo>
     <div class="user-zone">
-      <router-link to="/notifications">
+      <a href="#" @click.prevent="notifications">
         <span class="alert-dot"></span>
         <IconBell className="icon-bell"></IconBell>
-      </router-link>
+      </a>
       <router-link to="/profile">
         <IconFace className="icon-face"></IconFace>
       </router-link>
@@ -28,6 +28,11 @@ export default {
     IconHome,
     IconBell,
     IconFace
+  },
+  methods: {
+    notifications() {
+      this.$store.dispatch('lightboxAlert')
+    }
   },
   computed: {
     isDashboard() {

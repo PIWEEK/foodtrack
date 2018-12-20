@@ -40,7 +40,7 @@ export default {
       try {
         const token = await api.auth.login(this.email, this.password)
         document.cookie = `token=${token}`
-        this.$router.push('/dashboard')
+        this.$router.replace('/dashboard')
       } catch (error) {
         console.log(error)
       }

@@ -117,7 +117,9 @@ export default {
       this.$store.dispatch('tupperMove')
     },
     remove() {
-      console.log('Eliminar')
+      this.$store.dispatch('lightboxConfirmRemove', {
+        _id: this.$store.state.tupperRead._id
+      })
     }
   }
 }
