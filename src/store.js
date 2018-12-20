@@ -68,6 +68,15 @@ export default new Vuex.Store({
     },
     tupperRead(state, payload) {
       state.tupperRead.tagId = payload.tagId
+      const tupper = state.tuppers.find((tupper) => tupper.tagId === payload.tagId)
+      if (tupper) {
+        state.tupperRead.name = tupper.name
+        state.tupperRead.content = tupper.content
+        state.tupperRead.storedAt = tupper.storedAt
+        state.tupperRead.servings = tupper.servings
+        state.tupperRead.cookedAt = tupper.cookedAt
+        state.tupperRead.notifyMeAt = tupper.notifyMeAt
+      }
     },
     servingEaten(state, payload) {
       state.tupperRead.tagId = null

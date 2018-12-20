@@ -4,10 +4,10 @@
     <div class="fridge-content">
       <router-link class="btn-primary btn-line" tag="button" to="/tupper-list?view=fridge">NEVERA</router-link>
       <div class="fridge-tuppers">
-        <!--div class="tupperholder">
+        <div class="tupperholder" v-if="fridge.length === 0">
           <span>Tu nevera está vacía</span>
-        </div-->
-        <div class="home-fridge-list">
+        </div>
+        <div class="home-fridge-list" v-else>
           <div class="list-item" v-for="tupper in fridge" :key="tupper.tagId">
             <h3>{{tupper.name}}</h3>
             <div class="alarm-date">
@@ -21,17 +21,17 @@
     <div class="cold-content">
       <router-link class="btn-primary btn-line" tag="button" to="/tupper-list?view=freezer">CONGELADOR</router-link>
       <div class="cold-tuppers">
-        <!--div class="tupperholder">
+        <div class="tupperholder" v-if="freezer.length === 0">
           <span>Tu congelador está vacío</span>
-        </div-->
-        <div class="home-cold-list">
+        </div>
+        <div class="home-cold-list" v-else>
           <tupper50 className="tupper-50"></tupper50>
           <h3>{{freezer.length}} tuppers</h3>
         </div>
       </div>
     </div>
     <div class="btn-icon">
-      <IconNfc className="icon-nfc"></IconNfc>
+      <IconNFC className="icon-nfc"></IconNFC>
       <router-link tag="button" class="btn-primary" to="/scanning">
         Escanear NFC
       </router-link>
@@ -48,7 +48,7 @@ import moment from 'moment'
 
 import Header from '@/components/Header'
 import IconFridge from '@/icons/icon-fridge'
-import IconNfc from '@/icons/icon-nfc'
+import IconNFC from '@/icons/icon-nfc'
 import tupper50 from '@/icons/tupper-50'
 import IconBellGradient from '@/icons/icon-bell-gradient'
 
@@ -57,14 +57,12 @@ export default {
   components: {
     Header,
     IconFridge,
-    IconNfc,
+    IconNFC,
     IconBellGradient,
     tupper50
   },
-  data() {
-    return {
-
-    }
+  created() {
+    this.$store.dispatch('tupperList')
   },
   methods: {
     formatDate(date) {

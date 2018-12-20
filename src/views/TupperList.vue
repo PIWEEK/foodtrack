@@ -48,7 +48,7 @@ export default {
     view: String
   },
   created() {
-    //this.$store.dispatch('tupperList')
+    this.$store.dispatch('tupperList')
   },
   data() {
     return {

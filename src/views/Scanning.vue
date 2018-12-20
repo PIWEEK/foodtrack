@@ -43,13 +43,11 @@ export default {
   methods: {
     handleNFCRead(tagId) {
       const tupper = this.$store.state.tuppers.find(tupper => tupper.tagId === tagId)
-      console.log(tupper)
-      const isNew = tupper !== null
       this.$store.dispatch('tupperRead', { tagId })
-      if (isNew) {
-        this.$router.replace('/add-tupper')
-      } else {
+      if (tupper) {
         this.$router.replace('/tupper-detail')
+      } else {
+        this.$router.replace('/add-tupper')
       }
     }
   },
@@ -61,7 +59,7 @@ export default {
         }
         return ['scanning-loader', 'is-disabled']
       }
-      return 'scanning-loader'
+      return ['scanning-loader', 'is-scanning']
     },
     message() {
       if (this.isAvailable) {
@@ -100,23 +98,48 @@ export default {
 }
 
 .scanning-loader {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 300px;
+  width: 18rem;
+  height: 18rem;
 
   &.is-disabled {
 
   }
 
   &.is-scanning {
-    border: 2px solid rgba(255,255,255,0.5);
+    border: 4px solid rgba(255,255,255,0.5);
     border-radius: 100%;
+
+    &::after {
+      content: ' ';
+      position: absolute;
+      top: -4px;
+      left: -2px;
+      width: 18rem;
+      height: 18rem;
+      border: 4px solid rgba(255,255,255,0.75);
+      border-radius: 100%;
+      border-left-color: transparent;
+      border-top-color: transparent;
+      border-right: 0;
+      animation: loop linear 1s infinite;
+    }
   }
 }
 
 .icon-tupper-nfc {
   fill: white
+}
+
+@keyframes loop {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

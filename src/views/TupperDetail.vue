@@ -44,27 +44,48 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
-import tupper50 from '@/icons/tupper-50.vue'
-import IconUser from '@/icons/icon-user.vue'
-import IconDate from '@/icons/icon-date.vue'
-import IconFridge from '@/icons/icon-fridge.vue'
-import IconTrash from '@/icons/icon-trash.vue'
-import IconCold from '@/icons/icon-cold.vue'
+import moment from 'moment'
+
+import Header from '@/components/Header'
+import tupper50 from '@/icons/tupper-50'
+import IconUser from '@/icons/icon-user'
+import IconDate from '@/icons/icon-date'
+import IconFridge from '@/icons/icon-fridge'
+import IconTrash from '@/icons/icon-trash'
+import IconCold from '@/icons/icon-cold'
 
 export default {
   name: 'TupperDetail',
   components: {
-    Header, tupper50, IconUser, IconDate, IconFridge, IconTrash, IconCold
+    Header,
+    IconUser,
+    IconDate,
+    IconFridge,
+    IconTrash,
+    IconCold,
+    tupper50
   },
-  data: function () {
-    return {
-      name: 'Sopa',
-      description: 'Sopa de picadillo',
-      servings: 2,
-      cookedAt: '2018-12-19',
-      location: 'Congelador',
-      notifyMe: '2018-12-29'
+  computed: {
+    tagId() {
+      return this.$store.state.tupperRead.tagId
+    },
+    name() {
+      return this.$store.state.tupperRead.name
+    },
+    content() {
+      return this.$store.state.tupperRead.content
+    },
+    servings() {
+      return this.$store.state.tupperRead.servings
+    },
+    cookedAt() {
+      return moment(this.$store.state.tupperRead.cookedAt).format('DD/MM/YYYY')
+    },
+    storedAt() {
+      return this.$store.state.tupperRead.storedAt === 'fridge' ? 'Nevera' : 'Congelador'
+    },
+    notifyMeAt() {
+      return moment(this.$store.state.tupperRead.notifyMeAt).fromNow(true)
     }
   }
 }
@@ -115,7 +136,6 @@ p {
       margin-right: 0;
     }
   }
-
 }
 
 .delete-link {
@@ -148,5 +168,4 @@ h5.small {
   text-align: left;
   text-transform: uppercase;
 }
-
 </style>
