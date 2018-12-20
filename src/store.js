@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import nfc from '@/nfc'
 import api from '@/api'
+import moment from 'moment'
 
 Vue.use(Vuex)
 
@@ -22,7 +23,32 @@ export default new Vuex.Store({
       servings: 1,
       availableServings: 0
     },
-    tuppers: [],
+    tuppers: [
+      {
+        tagId: 'asdsadasdsad',
+        tupperId: 'asdasdadasd',
+        name: 'Pollo al Curry',
+        content: 'Al rico pollo al curry con su arrocito y sus mandangas',
+        created: moment().toDate(),
+        modified: moment().toDate(),
+        storedAt: 'fridge',
+        cookedAt: moment().toDate(),
+        notifyMeAt: moment().add(2, 'days').toDate(),
+        servings: 2
+      },
+      {
+        tagId: 'asdsadasdsad',
+        tupperId: 'asdasdadasd',
+        name: 'Paella de verduras',
+        content: 'Paellita ipsum dolor sit amet, c\'est la vie, garçon',
+        created: moment().toDate(),
+        modified: moment().toDate(),
+        storedAt: 'fridge',
+        cookedAt: moment().toDate(),
+        notifyMeAt: moment().add(2, 'days').toDate(),
+        servings: 2
+      }
+    ],
     nfc: {
       status: undefined,
       isEnabled: undefined
@@ -84,6 +110,6 @@ export default new Vuex.Store({
       }).catch((reason) => {
         commit('nfcCheck', reason)
       })
-    },
+    }
   }
 })

@@ -2,7 +2,7 @@
   <div class="dashboard">
     <Header></Header>
     <div class="fridge-content">
-      <button class="btn-primary btn-line">NEVERA</button>
+      <router-link class="btn-primary btn-line" tag="button" to="/tupper-list?view=fridge">NEVERA</router-link>
       <div class="fridge-tuppers">
         <!--div class="tupperholder">
           <span>Tu nevera está vacía</span>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="cold-content">
-      <button class="btn-primary btn-line">CONGELADOR</button>
+      <router-link class="btn-primary btn-line" tag="button" to="/tupper-list?view=freezer">CONGELADOR</router-link>
       <div class="cold-tuppers">
         <!--div class="tupperholder">
           <span>Tu congelador está vacío</span>
@@ -54,7 +54,6 @@
       <IconFridge className="icon-fridge"></IconFridge>
       <span>Compartir frigorífico</span>
     </button>
-    </div>
   </div>
 </template>
 

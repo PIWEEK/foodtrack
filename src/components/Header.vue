@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <router-link class="trigger-menu" to="/dashboard">
+    <router-link class="trigger-menu" to="/dashboard" v-if="!isDashboard">
       <IconHome className="icon-home"></IconHome>
     </router-link>
     <MainLogo className="foodtrack-logo"></MainLogo>
@@ -22,7 +22,17 @@ import IconBell from '@/icons/icon-bell.vue'
 import IconFace from '@/icons/icon-face.vue'
 export default {
   name: 'Header',
-  components: { MainLogo, IconHome, IconBell, IconFace }
+  components: {
+    MainLogo,
+    IconHome,
+    IconBell,
+    IconFace
+  },
+  computed: {
+    isDashboard() {
+      return this.$route.path === '/dashboard'
+    }
+  }
 }
 </script>
 

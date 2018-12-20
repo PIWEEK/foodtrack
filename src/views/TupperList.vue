@@ -37,6 +37,9 @@ export default {
     TupperItem,
     IconNfc
   },
+  props: {
+    view: String
+  },
   created() {
     this.$store.dispatch('tupperList')
   },

@@ -62,7 +62,8 @@ export default new Router({
     {
       path: '/tupper-list',
       name: 'TupperList',
-      component: TupperList
+      component: TupperList,
+      props: (route) => ({ view: route.query.view })
     },
     {
       path: '/login',
