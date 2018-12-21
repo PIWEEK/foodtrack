@@ -53,7 +53,8 @@ export default {
   methods: {
     remove() {
       this.$store.dispatch('lightboxConfirmRemove', {
-        _id: this.item._id
+        _id: this.item._id,
+        name: this.item.name
       })
     },
     detail() {

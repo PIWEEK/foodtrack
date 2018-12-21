@@ -127,7 +127,8 @@ export default {
     },
     remove() {
       this.$store.dispatch('lightboxConfirmRemove', {
-        _id: this.$store.state.tupperRead._id
+        _id: this.$store.state.tupperRead._id,
+        name: this.$store.state.tupperRead.name
       })
     }
   }

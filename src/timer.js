@@ -4,7 +4,6 @@ export default function create(store) {
   let intervalID
 
   function handler() {
-    console.log('intervalito')
     store.dispatch('timer')
   }
 

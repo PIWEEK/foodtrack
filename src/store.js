@@ -11,7 +11,8 @@ export default new Vuex.Store({
   state: {
     lightbox: 'none',
     confirmRemove: {
-      _id: null
+      _id: null,
+      name: ''
     },
     tupperCreated: {
       name: ''
@@ -222,7 +223,11 @@ export default new Vuex.Store({
       })
     },
     timer({ commit }) {
-      commit('timer')
+      const hour = moment().hour()
+      if ((hour >= 12 && hour <= 16)
+       || (hour >= 19 && hour <= 23)) {
+        commit('timer')
+      }
     }
   }
 })

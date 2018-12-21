@@ -10,7 +10,7 @@
       <h3>VAS A ELIMINAR</h3>
       <div class="tupper-name">
         <tupper50 className="tupper-50"></tupper50>
-        <h3>Pollo al curry</h3>
+        <h3>{{name}}</h3>
       </div>
     </div>
     <div class="lightbox-btn">
@@ -42,6 +42,11 @@ export default {
       if (this.$route.path === '/tupper-detail') {
         this.$router.replace('/dashboard')
       }
+    }
+  },
+  computed: {
+    name() {
+      return this.$store.state.confirmRemove.name
     }
   }
 }
