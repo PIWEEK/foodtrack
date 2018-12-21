@@ -244,4 +244,13 @@ h5.small {
   text-align: left;
   text-transform: uppercase;
 }
+
+.eat-by-serving {
+  .row-flex {
+    .btn-primary {
+      margin: .5rem;
+      max-width: 46%;
+    }
+  }
+}
 </style>

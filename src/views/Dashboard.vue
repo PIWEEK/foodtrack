@@ -126,7 +126,7 @@ export default {
 }
 
 .fridge-content {
-  min-height: 35vh;
+  min-height: 37vh;
 }
 
 .cold-content {
@@ -172,39 +172,32 @@ export default {
 .home-fridge-list {
   display: flex;
   flex: 1;
+  flex-direction: column;
   flex-wrap: wrap;
   padding-top: .4rem;
 }
 
 .list-item {
+  align-items: flex-start;
   border: 1px solid $dark-shade-25;
   border-radius: 4px;
   display: flex;
-  flex-direction: column;
-  flex: 1;
   margin: .4rem;
   padding: .8rem 1rem;
 
-  &:first-child {
-    flex: auto;
-
-    h3 {
-      font-weight: bold;
-    }
-  }
-
   h3 {
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: bold;
     line-height: 1.5;
-    max-height: 55px;
+    max-height: 50px;
     overflow: hidden;
   }
 
   .alarm-date {
     align-items: center;
     display: flex;
-    margin-top: .8rem;
+    flex-shrink: 0;
+    margin-left: auto;
 
     svg {
       margin-right: .5rem;
