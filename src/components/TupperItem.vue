@@ -16,7 +16,7 @@
         <IconDate className="icon-date"></IconDate>
         <span>{{cooked}}</span>
       </div>
-      <a href="#" @click.prevent="remove">
+      <a href="#" class="trash" @click.prevent="remove">
         <IconTrash className="icon-trash"></IconTrash>
       </a>
     </div>
@@ -132,6 +132,9 @@ export default {
   }
 }
 
+.trash {
+  margin-left: auto;
+}
 .icon-trash {
   fill: $red;
   height: 20px;

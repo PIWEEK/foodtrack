@@ -7,7 +7,7 @@
       </span>
     </div>
     <div class="lightbox-inside">
-      <div class="tupperholder">No hay alertas</div>
+      <div class="tupperholder" v-if="tuppers.length === 0">No hay alertas</div>
       <div class="tupper" v-for="tupper in tuppers" :key="tupper._id">
         <div class="row-flex">
           <h3>{{tupper.name}}</h3>
