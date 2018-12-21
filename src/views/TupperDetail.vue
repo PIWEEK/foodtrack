@@ -7,6 +7,12 @@
     </h2>
     <p>{{content}}</p>
     <div class="row-flex">
+      <div class="poo-date">
+        <IconBell className="icon-bell"></IconBell>
+        <span>{{notifyMe}}TEST</span>
+      </div>
+    </div>
+    <div class="row-flex">
       <IconUser className="icon-user"></IconUser>
       <span>{{servings}} raciones</span>
     </div>
@@ -53,6 +59,7 @@ import IconDate from '@/icons/icon-date'
 import IconFridge from '@/icons/icon-fridge'
 import IconTrash from '@/icons/icon-trash'
 import IconCold from '@/icons/icon-cold'
+import IconBell from '@/icons/icon-bell'
 
 export default {
   name: 'TupperDetail',
@@ -63,6 +70,7 @@ export default {
     IconFridge,
     IconTrash,
     IconCold,
+    IconBell,
     tupper50
   },
   computed: {
@@ -145,12 +153,14 @@ export default {
 }
 
 p {
-  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  margin-bottom: 3.5rem;
 }
 
 .row-flex {
   align-items: center;
   margin: .8rem 0;
+  position: relative;
 
   svg {
     fill: $dark-shade-50;
@@ -168,6 +178,38 @@ p {
 
     &:last-child {
       margin-right: 0;
+    }
+  }
+  .poo-date {
+    background: linear-gradient(270deg, #F8A4D8 0%, #6C63FF 100%);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    display: flex;
+    left: -30px;
+    justify-content: flex-start;
+    padding: .3rem .6rem .3rem 2rem;
+    position: absolute;
+    top: -30px;
+    width: 140px;
+
+    span {
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    svg {
+      fill: white;
+      margin-right: 1rem;
+      margin-left: 0;
+      width: 12px;
+    }
+
+    &.deadline {
+      background: $red;
     }
   }
 }
