@@ -6,7 +6,7 @@
     <MainLogo className="foodtrack-logo"></MainLogo>
     <div class="user-zone">
       <a href="#" @click.prevent="notifications">
-        <span class="alert-dot"></span>
+        <span class="alert-dot" v-if="hasAlerts"></span>
         <IconBell className="icon-bell"></IconBell>
       </a>
       <router-link to="/profile">
@@ -35,6 +35,9 @@ export default {
     }
   },
   computed: {
+    hasAlerts() {
+      return this.$store.state.alerts.length > 0
+    },
     isDashboard() {
       return this.$route.path === '/dashboard'
     }

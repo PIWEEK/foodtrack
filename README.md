@@ -223,3 +223,41 @@ npm run test:unit
 
 ### Personalizar configuración
 Ver [Referencia de configuración](https://cli.vuejs.org/config/).
+
+## Producción
+
+### Generar un .apk autofirmado
+
+Para generar un `.apk` autofirmado tan sólo tenemos que ejecutar los siguientes comandos:
+
+```sh
+npm run cordova-build-android
+```
+
+Esto nos generará un archivo en `cordova/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk`, este `.apk` necesita ser firmado para poder ser instalado, así que lo siguiente será ejecutar `jarsigner`:
+
+```sh
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore foodtrack.keystore cordova/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk foodtrack
+```
+
+> La contraseña es `testeando`
+
+Si necesitases generar tus propios certificados, puedes hacerlo usando `keytool`:
+
+```sh
+keytool -genkey -v -keystore foodtrack.keystore -alias foodtrack -keyalg RSA -keysize 2048 -validity 10000
+```
+
+- keystore: indica el nombre del archivo `.keystore` que vamos a generar.
+- alias: alias de la keystore.
+- keyalg: algoritmo usado para generar la key.
+- keysize: tamaño de la key.
+- validity: validez en días.
+
+### Instalar un .apk usando adb
+
+Para instalar nuestro recién firmado `.apk` tan sólo debemos conectar el móvil con `adb` (bien a través de TCP o bien a través de USB) y ejecutar:
+
+```sh
+adb install cordova/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk
+```

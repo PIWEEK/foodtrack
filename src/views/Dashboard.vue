@@ -82,8 +82,8 @@ export default {
         ? this.$store.state.tuppers.filter(tupper => tupper.storedAt === 'fridge')
         : []
 
-      fridge.sort((a, b) => a.notifyMeAt - b.notifyMeAt)
-      return fridge
+      fridge.sort((a, b) => b.notifyMeAt - a.notifyMeAt)
+      return fridge.slice(0, 3)
     },
     freezer() {
       return this.$store.state.tuppers

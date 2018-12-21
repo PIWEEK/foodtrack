@@ -27,6 +27,7 @@ export default new Vuex.Store({
       servings: 1,
       availableServings: 0
     },
+    alerts: [],
     tuppers: [
       {
         tagId: '0cc175b9c0f1b6a831c399e269772661',
@@ -133,6 +134,12 @@ export default new Vuex.Store({
         state.nfc.isEnabled = false
         state.nfc.status = 'available'
       }
+    },
+    timer(state) {
+      state.alerts = state.tuppers.filter((tupper) => {
+        const duration = moment.duration(moment(tupper.notifyMeAt).diff(moment()))
+        return (duration.days <= 0)
+      })
     }
   },
   actions: {
@@ -215,6 +222,9 @@ export default new Vuex.Store({
       }).catch((reason) => {
         commit('nfcCheck', reason)
       })
+    },
+    timer({ commit }) {
+      commit('timer')
     }
   }
 })

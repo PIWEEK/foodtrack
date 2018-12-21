@@ -7,27 +7,9 @@
       </span>
     </div>
     <div class="lightbox-inside">
-      <div class="tupper">
+      <div class="tupper" v-for="tupper in tuppers" :key="tupper._id">
         <div class="row-flex">
-          <h3>Pollo al curry</h3>
-          <div class="poo-date deadline">
-            <span>HOY</span>
-            <IconBell className="icon-bell"></IconBell>
-          </div>
-        </div>
-      </div>
-      <div class="tupper">
-        <div class="row-flex">
-          <h3>Pollo al curry</h3>
-          <div class="poo-date deadline">
-            <span>HOY</span>
-            <IconBell className="icon-bell"></IconBell>
-          </div>
-        </div>
-      </div>
-      <div class="tupper">
-        <div class="row-flex">
-          <h3>Pollo al curry</h3>
+          <h3>{{tupper.name}}</h3>
           <div class="poo-date deadline">
             <span>HOY</span>
             <IconBell className="icon-bell"></IconBell>
@@ -51,6 +33,11 @@ export default {
   methods: {
     close() {
       this.$store.dispatch('lightboxNone')
+    }
+  },
+  computed: {
+    tuppers() {
+      return this.$store.state.alerts
     }
   }
 }
