@@ -49,6 +49,10 @@ export default {
   },
   mounted() {
     this.$store.dispatch('tupperList')
+    // ÑAPAZA
+    setTimeout(() => {
+      this.$store.dispatch('tupperList')
+    }, 2000)
   },
   data() {
     return {
