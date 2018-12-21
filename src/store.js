@@ -138,7 +138,7 @@ export default new Vuex.Store({
     timer(state) {
       state.alerts = state.tuppers.filter((tupper) => {
         const duration = moment.duration(moment(tupper.notifyMeAt).diff(moment()))
-        return (duration.days <= 0)
+        return (duration.asDays() <= 0)
       })
     }
   },
@@ -165,7 +165,6 @@ export default new Vuex.Store({
       commit('tupperRead', payload)
     },
     tupperEatServing({ state, commit }, payload) {
-      console.log('tupperEatServing', payload)
       return api.tuppers.eatServing({
         _id: state.tupperRead._id
       }, payload.quantity).then(() => {
@@ -176,7 +175,6 @@ export default new Vuex.Store({
       })
     },
     tupperEatWhole({ state, commit }, payload) {
-      console.log('tupperEatWhole', payload)
       return api.tuppers.eatWhole({ _id: state.tupperRead._id })
         .then(() => {
           commit('tupperEatWhole', {

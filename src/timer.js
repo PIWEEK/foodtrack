@@ -1,9 +1,10 @@
 export default function create(store) {
-  const INTERVAL = 5 * 60 * 1000
+  const INTERVAL = 60 * 1000
 
   let intervalID
 
   function handler() {
+    console.log('intervalito')
     store.dispatch('timer')
   }
 
