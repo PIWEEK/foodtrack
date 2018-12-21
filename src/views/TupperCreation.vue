@@ -9,7 +9,7 @@
       </div>
       <div class="form-group">
         <label for="content">Contenido</label>
-        <textarea id="content" v-model="content" rows="3" placeholder="Qué exquisitez as cocinado?" />
+        <textarea id="content" v-model="content" rows="3" placeholder="¿Qué exquisitez has cocinado?" />
       </div>
       <div class="form-group">
         <IconUser className="icon-user"></IconUser>
@@ -38,9 +38,18 @@
         <label for="notify-me-at">Avísame en</label>
         <select id="notify-me-at" v-model="notifyMeAt">
           <option selected disabled value="none">Selecciona una opción</option>
+          <option value="0 days">hoy</option>
           <option value="1 day">1 día</option>
+          <option value="2 days">2 días</option>
+          <option value="3 days">3 días</option>
+          <option value="4 days">4 días</option>
+          <option value="5 days">5 días</option>
           <option value="1 week">1 semana</option>
+          <option value="2 weeks">2 semanas</option>
+          <option value="3 weeks">3 semanas</option>
           <option value="1 month">1 mes</option>
+          <option value="2 months">2 meses</option>
+          <option value="6 months">6 meses</option>
         </select>
       </div>
       <div class="btn-icon">

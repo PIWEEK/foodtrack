@@ -3,7 +3,7 @@
     <Header></Header>
     <p>Se ha guardado tu tupper de</p>
     <IconTupperOk className="white"></IconTupperOk>
-    <h1>{{ name }} Pollo al curry</h1>
+    <h1>{{ name }}</h1>
     <router-link tag="button" class="btn-primary btn-line-transparent" to="/dashboard">
       ¡OK!
     </router-link>
