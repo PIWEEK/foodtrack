@@ -30,6 +30,7 @@ export default new Vuex.Store({
     },
     alerts: [],
     tuppers: [
+      /*
       {
         tagId: '0cc175b9c0f1b6a831c399e269772661',
         tupperId: 'a',
@@ -54,6 +55,7 @@ export default new Vuex.Store({
         notifyMeAt: moment().add(2, 'days').toDate(),
         servings: 2
       }
+      */
     ],
     nfc: {
       status: undefined,

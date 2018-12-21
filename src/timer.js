@@ -1,5 +1,5 @@
 export default function create(store) {
-  const INTERVAL = 60 * 1000
+  const INTERVAL = 30 * 1000
 
   let intervalID
 

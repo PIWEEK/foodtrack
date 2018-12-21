@@ -43,3 +43,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.tupperholder {
+  text-align: center;
+  color: $dark-shade-50;
+}
+</style>
