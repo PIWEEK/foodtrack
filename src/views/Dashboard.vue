@@ -131,21 +131,6 @@ export default {
 
 .cold-content {
   min-height: 12vh;
-  &::after,
-  &::before {
-    border: 6px solid $dark-shade-5;
-    border-radius: 12px;
-    bottom: -29px;
-    content: "";
-    left: 16px;
-    position: absolute;
-    height: 6px;
-    width: 50px;
-  }
-
-  &::before {
-    left: 266px;
-  }
 }
 
 .fridge-tuppers,

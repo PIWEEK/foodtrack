@@ -248,8 +248,9 @@ h5.small {
 .eat-by-serving {
   .row-flex {
     .btn-primary {
+      flex: 1;
       margin: .5rem;
-      max-width: 46%;
+      max-width: 45%;
     }
   }
 }

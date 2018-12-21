@@ -38,7 +38,7 @@ body {
   color: $dark-shade-100;
   font-family: 'Montserrat', sans-serif;
   margin-top: 60px;
-  padding: 1rem 1.7rem;
+  padding: 1rem 1.4rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -99,6 +99,7 @@ hr {
 
   svg {
     margin-right: .8rem;
+    flex-shrink: 0;
   }
 
   &.btn-green {
@@ -226,7 +227,7 @@ hr {
     }
 
     &:invalid {
-      border-color: $red;
+      // border-color: $red;
     }
   }
 
