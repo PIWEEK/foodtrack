@@ -120,6 +120,7 @@ export default new Vuex.Store({
     lightboxConfirmRemove(state, payload) {
       state.lightbox = 'confirm-remove'
       state.confirmRemove._id = payload._id
+      state.confirmRemove.name = payload.name
     },
     lightboxAlert(state, payload) {
       state.lightbox = 'alert'
