@@ -3,10 +3,10 @@
     <Header></Header>
     <p>Te has comido <span>{{ servings }} ración</span> de</p>
     <IconTupperOk className="white"></IconTupperOk>
-    <h1>{{ name }}</h1>
-    <p>Me {{ verb }} {{ availableServings }}</p>
+    <h1>{{ name }}Pollo al curry</h1>
+    <p class="servings">Me {{ verb }} <strong>{{ availableServings }} raciones</strong></p>
     <router-link class="btn-primary btn-line-transparent" tag="button" to="/dashboard">
-      ¡OK!
+      ¡ÑAM!
     </router-link>
   </div>
 </template>
@@ -54,13 +54,22 @@ export default {
   p {
     margin-top: 6rem;
     margin-bottom: 2rem;
-    font-size: 2rem;
+    font-size: 1.4rem;
+    text-align: center;
+
+    strong {
+      font-weight: bold;
+    }
+
+    &.servings {
+      margin-top: 2rem;
+    }
   }
 
   h1 {
-    margin-top: 2rem;
+    margin-top: 3rem;
     margin-bottom: 4rem;
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
 

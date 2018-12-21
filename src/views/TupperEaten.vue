@@ -61,6 +61,7 @@ export default {
     margin-top: 6rem;
     margin-bottom: 2rem;
     font-size: 2rem;
+    text-align: center;
   }
 
   h1 {
