@@ -106,7 +106,10 @@ export default {
   }
   .btn-line {
     flex: 0;
-    margin-top: 1.2rem;
+  }
+
+  .btn-primary {
+    margin-top: 1rem;
   }
 }
 
@@ -130,7 +133,7 @@ export default {
 }
 
 .cold-content {
-  min-height: 12vh;
+  min-height: 14vh;
 }
 
 .fridge-tuppers,
