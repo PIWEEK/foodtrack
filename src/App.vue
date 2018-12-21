@@ -357,6 +357,26 @@ hr {
       h3 {
         font-size: .9rem;
       }
+
+      .tupper-name {
+        font-weight: bold;
+        margin-top: 1.8rem;
+        padding: 1rem 1rem 1rem 2.8rem;
+        position: relative;
+
+        h3 {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        }
+
+        svg {
+          top: 1rem;
+          fill: black;
+          left: .2rem;
+          position: absolute;
+          width: 30px;
+        }
+      }
     }
 
     .lightbox-btn {
