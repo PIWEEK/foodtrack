@@ -9,7 +9,7 @@
     <div class="row-flex">
       <div class="poo-date">
         <IconBell className="icon-bell"></IconBell>
-        <span>{{notifyMe}}TEST</span>
+        <span>{{notifyMeAt}}</span>
       </div>
     </div>
     <div class="row-flex">
@@ -22,7 +22,7 @@
     </div>
     <div class="row-flex">
       <IconDate className="icon-data"></IconDate>
-      <span>{{notifyMeAt}}</span>
+      <span>{{cookedAt}}</span>
     </div>
     <button class="btn-primary" @click.prevent="eatWhole">
       COMÉRMELO
@@ -38,7 +38,7 @@
         <button class="btn-primary btn-line" v-for="serving in servingsList" :key="serving" @click.prevent="eatServing(serving)">
           <tupper50 className="tupper-50"></tupper50>
           <span>{{serving}} {{servingNoun(serving)}}</span>
-      </button>
+        </button>
       </div>
     </div>
     <h5 class="small">MOVER</h5>
@@ -121,8 +121,9 @@ export default {
       await this.$store.dispatch('tupperEatWhole')
       this.$router.replace('/tupper-eaten')
     },
-    moveTo() {
-      this.$store.dispatch('tupperMove')
+    async moveTo() {
+      await this.$store.dispatch('tupperMove')
+      this.$router.replace('/dashboard')
     },
     remove() {
       this.$store.dispatch('lightboxConfirmRemove', {

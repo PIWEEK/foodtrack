@@ -47,7 +47,7 @@ export default {
   props: {
     view: String
   },
-  created() {
+  mounted() {
     this.$store.dispatch('tupperList')
   },
   data() {

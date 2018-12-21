@@ -61,7 +61,7 @@ export default {
     IconBellGradient,
     tupper50
   },
-  created() {
+  mounted() {
     this.$store.dispatch('tupperList')
   },
   methods: {
